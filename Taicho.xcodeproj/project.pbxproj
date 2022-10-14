@@ -1,0 +1,748 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1C43A6923464D6543966318C /* Pods_TaichoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16E084ACDC6A0E817AADD13E /* Pods_TaichoTests.framework */; };
+		4668C9511031320BA12146C3 /* Pods_Taicho.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B00A2764B43A6B37D7B6068B /* Pods_Taicho.framework */; };
+		65C801AE28FA2102000B80C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C801AD28FA2102000B80C6 /* AppDelegate.swift */; };
+		65C801B028FA2102000B80C6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C801AF28FA2102000B80C6 /* SceneDelegate.swift */; };
+		65C801B228FA2102000B80C6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C801B128FA2102000B80C6 /* ViewController.swift */; };
+		65C801B528FA2102000B80C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65C801B328FA2102000B80C6 /* Main.storyboard */; };
+		65C801B828FA2102000B80C6 /* Taicho.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 65C801B628FA2102000B80C6 /* Taicho.xcdatamodeld */; };
+		65C801BA28FA2103000B80C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65C801B928FA2103000B80C6 /* Assets.xcassets */; };
+		65C801BD28FA2103000B80C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65C801BB28FA2103000B80C6 /* LaunchScreen.storyboard */; };
+		65C801C828FA2104000B80C6 /* TaichoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C801C728FA2104000B80C6 /* TaichoTests.swift */; };
+		65C801D228FA2104000B80C6 /* TaichoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C801D128FA2104000B80C6 /* TaichoUITests.swift */; };
+		65C801D428FA2104000B80C6 /* TaichoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C801D328FA2104000B80C6 /* TaichoUITestsLaunchTests.swift */; };
+		65C801E128FA227E000B80C6 /* UIUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C801E028FA227E000B80C6 /* UIUtils.swift */; };
+		EF4ECF8C5035D88A525AA704 /* Pods_TaichoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 544C8F65D41B77308B79595F /* Pods_TaichoUITests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		65C801C428FA2104000B80C6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 65C801A228FA2102000B80C6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 65C801A928FA2102000B80C6;
+			remoteInfo = Taicho;
+		};
+		65C801CE28FA2104000B80C6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 65C801A228FA2102000B80C6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 65C801A928FA2102000B80C6;
+			remoteInfo = Taicho;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		16E084ACDC6A0E817AADD13E /* Pods_TaichoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaichoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E1AD23484F7D7754BFA2F4C /* Pods-TaichoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaichoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TaichoUITests/Pods-TaichoUITests.release.xcconfig"; sourceTree = "<group>"; };
+		37906082D4080BDC0672847B /* Pods-TaichoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaichoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TaichoTests/Pods-TaichoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4569934EA20A245C795FA02C /* Pods-TaichoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaichoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TaichoUITests/Pods-TaichoUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		544C8F65D41B77308B79595F /* Pods_TaichoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaichoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		65C801AA28FA2102000B80C6 /* Taicho.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Taicho.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		65C801AD28FA2102000B80C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		65C801AF28FA2102000B80C6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		65C801B128FA2102000B80C6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		65C801B428FA2102000B80C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		65C801B728FA2102000B80C6 /* Taicho.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Taicho.xcdatamodel; sourceTree = "<group>"; };
+		65C801B928FA2103000B80C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		65C801BC28FA2103000B80C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		65C801BE28FA2103000B80C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		65C801C328FA2104000B80C6 /* TaichoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaichoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		65C801C728FA2104000B80C6 /* TaichoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaichoTests.swift; sourceTree = "<group>"; };
+		65C801CD28FA2104000B80C6 /* TaichoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaichoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		65C801D128FA2104000B80C6 /* TaichoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaichoUITests.swift; sourceTree = "<group>"; };
+		65C801D328FA2104000B80C6 /* TaichoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaichoUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		65C801E028FA227E000B80C6 /* UIUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIUtils.swift; sourceTree = "<group>"; };
+		695F80B79ECAC5DA2777D011 /* Pods-TaichoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaichoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TaichoTests/Pods-TaichoTests.release.xcconfig"; sourceTree = "<group>"; };
+		7268CDCEE6F957892BFE3193 /* Pods-Taicho.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Taicho.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Taicho/Pods-Taicho.debug.xcconfig"; sourceTree = "<group>"; };
+		B00A2764B43A6B37D7B6068B /* Pods_Taicho.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Taicho.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDBFEF3662AB15F7B1A01AEE /* Pods-Taicho.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Taicho.release.xcconfig"; path = "Pods/Target Support Files/Pods-Taicho/Pods-Taicho.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		65C801A728FA2102000B80C6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4668C9511031320BA12146C3 /* Pods_Taicho.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		65C801C028FA2104000B80C6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C43A6923464D6543966318C /* Pods_TaichoTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		65C801CA28FA2104000B80C6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EF4ECF8C5035D88A525AA704 /* Pods_TaichoUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		65C801A128FA2102000B80C6 = {
+			isa = PBXGroup;
+			children = (
+				65C801AC28FA2102000B80C6 /* Taicho */,
+				65C801C628FA2104000B80C6 /* TaichoTests */,
+				65C801D028FA2104000B80C6 /* TaichoUITests */,
+				65C801AB28FA2102000B80C6 /* Products */,
+				C7AB3B8084B0FBBAB4E86611 /* Pods */,
+				DB6FE5E192B39C9244BAB1FC /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		65C801AB28FA2102000B80C6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				65C801AA28FA2102000B80C6 /* Taicho.app */,
+				65C801C328FA2104000B80C6 /* TaichoTests.xctest */,
+				65C801CD28FA2104000B80C6 /* TaichoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		65C801AC28FA2102000B80C6 /* Taicho */ = {
+			isa = PBXGroup;
+			children = (
+				65C801AD28FA2102000B80C6 /* AppDelegate.swift */,
+				65C801AF28FA2102000B80C6 /* SceneDelegate.swift */,
+				65C801B128FA2102000B80C6 /* ViewController.swift */,
+				65C801E028FA227E000B80C6 /* UIUtils.swift */,
+				65C801B328FA2102000B80C6 /* Main.storyboard */,
+				65C801B928FA2103000B80C6 /* Assets.xcassets */,
+				65C801BB28FA2103000B80C6 /* LaunchScreen.storyboard */,
+				65C801BE28FA2103000B80C6 /* Info.plist */,
+				65C801B628FA2102000B80C6 /* Taicho.xcdatamodeld */,
+			);
+			path = Taicho;
+			sourceTree = "<group>";
+		};
+		65C801C628FA2104000B80C6 /* TaichoTests */ = {
+			isa = PBXGroup;
+			children = (
+				65C801C728FA2104000B80C6 /* TaichoTests.swift */,
+			);
+			path = TaichoTests;
+			sourceTree = "<group>";
+		};
+		65C801D028FA2104000B80C6 /* TaichoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				65C801D128FA2104000B80C6 /* TaichoUITests.swift */,
+				65C801D328FA2104000B80C6 /* TaichoUITestsLaunchTests.swift */,
+			);
+			path = TaichoUITests;
+			sourceTree = "<group>";
+		};
+		C7AB3B8084B0FBBAB4E86611 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7268CDCEE6F957892BFE3193 /* Pods-Taicho.debug.xcconfig */,
+				BDBFEF3662AB15F7B1A01AEE /* Pods-Taicho.release.xcconfig */,
+				37906082D4080BDC0672847B /* Pods-TaichoTests.debug.xcconfig */,
+				695F80B79ECAC5DA2777D011 /* Pods-TaichoTests.release.xcconfig */,
+				4569934EA20A245C795FA02C /* Pods-TaichoUITests.debug.xcconfig */,
+				1E1AD23484F7D7754BFA2F4C /* Pods-TaichoUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		DB6FE5E192B39C9244BAB1FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B00A2764B43A6B37D7B6068B /* Pods_Taicho.framework */,
+				16E084ACDC6A0E817AADD13E /* Pods_TaichoTests.framework */,
+				544C8F65D41B77308B79595F /* Pods_TaichoUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		65C801A928FA2102000B80C6 /* Taicho */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 65C801D728FA2104000B80C6 /* Build configuration list for PBXNativeTarget "Taicho" */;
+			buildPhases = (
+				FDEFF020F870731B245AE7D4 /* [CP] Check Pods Manifest.lock */,
+				65C801A628FA2102000B80C6 /* Sources */,
+				65C801A728FA2102000B80C6 /* Frameworks */,
+				65C801A828FA2102000B80C6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Taicho;
+			productName = Taicho;
+			productReference = 65C801AA28FA2102000B80C6 /* Taicho.app */;
+			productType = "com.apple.product-type.application";
+		};
+		65C801C228FA2104000B80C6 /* TaichoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 65C801DA28FA2104000B80C6 /* Build configuration list for PBXNativeTarget "TaichoTests" */;
+			buildPhases = (
+				D5592827D809BA9E6E443053 /* [CP] Check Pods Manifest.lock */,
+				65C801BF28FA2104000B80C6 /* Sources */,
+				65C801C028FA2104000B80C6 /* Frameworks */,
+				65C801C128FA2104000B80C6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				65C801C528FA2104000B80C6 /* PBXTargetDependency */,
+			);
+			name = TaichoTests;
+			productName = TaichoTests;
+			productReference = 65C801C328FA2104000B80C6 /* TaichoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		65C801CC28FA2104000B80C6 /* TaichoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 65C801DD28FA2104000B80C6 /* Build configuration list for PBXNativeTarget "TaichoUITests" */;
+			buildPhases = (
+				47A9129B6E1BEAFD1346B746 /* [CP] Check Pods Manifest.lock */,
+				65C801C928FA2104000B80C6 /* Sources */,
+				65C801CA28FA2104000B80C6 /* Frameworks */,
+				65C801CB28FA2104000B80C6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				65C801CF28FA2104000B80C6 /* PBXTargetDependency */,
+			);
+			name = TaichoUITests;
+			productName = TaichoUITests;
+			productReference = 65C801CD28FA2104000B80C6 /* TaichoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		65C801A228FA2102000B80C6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1320;
+				LastUpgradeCheck = 1320;
+				TargetAttributes = {
+					65C801A928FA2102000B80C6 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					65C801C228FA2104000B80C6 = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 65C801A928FA2102000B80C6;
+					};
+					65C801CC28FA2104000B80C6 = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 65C801A928FA2102000B80C6;
+					};
+				};
+			};
+			buildConfigurationList = 65C801A528FA2102000B80C6 /* Build configuration list for PBXProject "Taicho" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 65C801A128FA2102000B80C6;
+			productRefGroup = 65C801AB28FA2102000B80C6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				65C801A928FA2102000B80C6 /* Taicho */,
+				65C801C228FA2104000B80C6 /* TaichoTests */,
+				65C801CC28FA2104000B80C6 /* TaichoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		65C801A828FA2102000B80C6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				65C801BD28FA2103000B80C6 /* LaunchScreen.storyboard in Resources */,
+				65C801BA28FA2103000B80C6 /* Assets.xcassets in Resources */,
+				65C801B528FA2102000B80C6 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		65C801C128FA2104000B80C6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		65C801CB28FA2104000B80C6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		47A9129B6E1BEAFD1346B746 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TaichoUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D5592827D809BA9E6E443053 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TaichoTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FDEFF020F870731B245AE7D4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Taicho-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		65C801A628FA2102000B80C6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				65C801E128FA227E000B80C6 /* UIUtils.swift in Sources */,
+				65C801B228FA2102000B80C6 /* ViewController.swift in Sources */,
+				65C801AE28FA2102000B80C6 /* AppDelegate.swift in Sources */,
+				65C801B028FA2102000B80C6 /* SceneDelegate.swift in Sources */,
+				65C801B828FA2102000B80C6 /* Taicho.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		65C801BF28FA2104000B80C6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				65C801C828FA2104000B80C6 /* TaichoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		65C801C928FA2104000B80C6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				65C801D428FA2104000B80C6 /* TaichoUITestsLaunchTests.swift in Sources */,
+				65C801D228FA2104000B80C6 /* TaichoUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		65C801C528FA2104000B80C6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 65C801A928FA2102000B80C6 /* Taicho */;
+			targetProxy = 65C801C428FA2104000B80C6 /* PBXContainerItemProxy */;
+		};
+		65C801CF28FA2104000B80C6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 65C801A928FA2102000B80C6 /* Taicho */;
+			targetProxy = 65C801CE28FA2104000B80C6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		65C801B328FA2102000B80C6 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				65C801B428FA2102000B80C6 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		65C801BB28FA2103000B80C6 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				65C801BC28FA2103000B80C6 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		65C801D528FA2104000B80C6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		65C801D628FA2104000B80C6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		65C801D828FA2104000B80C6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7268CDCEE6F957892BFE3193 /* Pods-Taicho.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AA375B8UFT;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Taicho/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Taicho.Taicho;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		65C801D928FA2104000B80C6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BDBFEF3662AB15F7B1A01AEE /* Pods-Taicho.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AA375B8UFT;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Taicho/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Taicho.Taicho;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		65C801DB28FA2104000B80C6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 37906082D4080BDC0672847B /* Pods-TaichoTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AA375B8UFT;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Taicho.TaichoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Taicho.app/Taicho";
+			};
+			name = Debug;
+		};
+		65C801DC28FA2104000B80C6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 695F80B79ECAC5DA2777D011 /* Pods-TaichoTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AA375B8UFT;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Taicho.TaichoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Taicho.app/Taicho";
+			};
+			name = Release;
+		};
+		65C801DE28FA2104000B80C6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4569934EA20A245C795FA02C /* Pods-TaichoUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AA375B8UFT;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Taicho.TaichoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Taicho;
+			};
+			name = Debug;
+		};
+		65C801DF28FA2104000B80C6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1E1AD23484F7D7754BFA2F4C /* Pods-TaichoUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AA375B8UFT;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Taicho.TaichoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Taicho;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		65C801A528FA2102000B80C6 /* Build configuration list for PBXProject "Taicho" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				65C801D528FA2104000B80C6 /* Debug */,
+				65C801D628FA2104000B80C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		65C801D728FA2104000B80C6 /* Build configuration list for PBXNativeTarget "Taicho" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				65C801D828FA2104000B80C6 /* Debug */,
+				65C801D928FA2104000B80C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		65C801DA28FA2104000B80C6 /* Build configuration list for PBXNativeTarget "TaichoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				65C801DB28FA2104000B80C6 /* Debug */,
+				65C801DC28FA2104000B80C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		65C801DD28FA2104000B80C6 /* Build configuration list for PBXNativeTarget "TaichoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				65C801DE28FA2104000B80C6 /* Debug */,
+				65C801DF28FA2104000B80C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		65C801B628FA2102000B80C6 /* Taicho.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				65C801B728FA2102000B80C6 /* Taicho.xcdatamodel */,
+			);
+			currentVersion = 65C801B728FA2102000B80C6 /* Taicho.xcdatamodel */;
+			path = Taicho.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 65C801A228FA2102000B80C6 /* Project object */;
+}
