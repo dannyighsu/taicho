@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-protocol LogEntryDetailPropertyViewDelegate: UITextFieldDelegate & UITextViewDelegate {
+protocol LogEntryDetailPropertyViewDelegate: UITextViewDelegate {
     
 }
 
@@ -22,19 +22,14 @@ class LogEntryDetailPropertyView: UIView {
      Assumes the text view needs at least 2 lines.
      */
     var heightRequired: CGFloat {
-        let textInputViewSize = useTextView
-        ? propertyTextView.sizeThatFits(CGSize.greatestFiniteSize).height
-        : propertyTextField.sizeThatFits(CGSize.greatestFiniteSize).height
         return UIConstants.interItemSpacing * 3
         + propertyLabel.sizeThatFits(CGSize.greatestFiniteSize).height
-        + textInputViewSize
+        + propertyTextView.sizeThatFits(CGSize.greatestFiniteSize).height
     }
     
     private weak var delegate: LogEntryDetailPropertyViewDelegate?
     
-    private let useTextView: Bool
     private let propertyLabel = UILabel()
-    private let propertyTextField = UITextField()
     private let propertyTextView = UITextView()
     
     /**
@@ -43,9 +38,7 @@ class LogEntryDetailPropertyView: UIView {
     init(delegate: LogEntryDetailPropertyViewDelegate,
          labelTitle: String,
          textPrefill: String? = nil,
-         textPlaceholder: String? = nil,
-         useTextView: Bool = false) {
-        self.useTextView = useTextView
+         textPlaceholder: String? = nil) {
         super.init(frame: .zero)
         self.delegate = delegate
         
@@ -56,8 +49,16 @@ class LogEntryDetailPropertyView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func setText(_ text: String) {
+        propertyTextView.text = text
+    }
+    
+    func getTextValue() -> String? {
+        return propertyTextView.text
+    }
+    
     private func configureViews(with labelTitle: String, textPrefill: String?, textPlaceholder: String?) {
-        [propertyLabel, propertyTextField, propertyTextView].forEach {
+        [propertyLabel, propertyTextView].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             addSubview($0)
             NSLayoutConstraint.activate([
@@ -74,46 +75,24 @@ class LogEntryDetailPropertyView: UIView {
         ])
         
         // Configure text input views
-        propertyTextField.font = UIFont.systemFont(ofSize: 16)
         propertyTextView.font = UIFont.systemFont(ofSize: 16)
-        propertyTextField.backgroundColor = .secondarySystemBackground.withAlphaComponent(0.5)
         propertyTextView.backgroundColor = .secondarySystemBackground.withAlphaComponent(0.5)
-        propertyTextField.layer.cornerRadius = 2.0
         propertyTextView.layer.cornerRadius = 2.0
-        propertyTextField.layer.borderColor = UIColor.separator.cgColor
         propertyTextView.layer.borderColor = UIColor.separator.cgColor
-        propertyTextField.layer.borderWidth = 1.0
         propertyTextView.layer.borderWidth = 1.0
         propertyTextView.textContainerInset = UIEdgeInsets.defaultTextInsets
-        propertyTextField.delegate = delegate
         propertyTextView.delegate = delegate
         
-        if useTextView {
-            propertyTextField.isHidden = useTextView
-            NSLayoutConstraint.activate([
-                propertyTextView.topAnchor.constraint(
-                    equalTo: propertyLabel.bottomAnchor,
-                    constant: UIConstants.interItemSpacing),
-                propertyTextView.bottomAnchor.constraint(
-                    equalTo: bottomAnchor,
-                    constant: -UIConstants.interItemSpacing)
-            ])
-            if let textPrefill = textPrefill {
-                propertyTextView.text = textPrefill
-            }
-        } else {
-            propertyTextView.isHidden = !useTextView
-            NSLayoutConstraint.activate([
-                propertyTextField.topAnchor.constraint(
-                    equalTo: propertyLabel.bottomAnchor,
-                    constant: UIConstants.interItemSpacing)
-            ])
-            if let textPlaceholder = textPlaceholder {
-                propertyTextField.placeholder = textPlaceholder
-            }
-            if let textPrefill = textPrefill {
-                propertyTextField.text = textPrefill
-            }
+        NSLayoutConstraint.activate([
+            propertyTextView.topAnchor.constraint(
+                equalTo: propertyLabel.bottomAnchor,
+                constant: UIConstants.interItemSpacing),
+            propertyTextView.bottomAnchor.constraint(
+                equalTo: bottomAnchor,
+                constant: -UIConstants.interItemSpacing)
+        ])
+        if let textPrefill = textPrefill {
+            propertyTextView.text = textPrefill
         }
     }
     

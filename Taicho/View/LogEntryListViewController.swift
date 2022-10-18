@@ -37,6 +37,11 @@ class LogEntryListViewController: UIViewController {
         updateData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateData()
+    }
+    
     func updateData() {
         logEntries = TaichoContainer.container.logEntryDataManager.getAllLogEntries()
         tableView.reloadData()

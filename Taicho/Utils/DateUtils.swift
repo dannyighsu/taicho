@@ -18,11 +18,22 @@ struct DateUtils {
     }
     
     static func getDisplayFormat(_ date: Date, inTimezone timezone: TimeZone) -> String {
+        return getTimezoneDateFormatter(timezone).string(from: date)
+    }
+    
+    static func getDate(from displayFormattedDate: String) -> Date? {
+        let range = NSRange(location: 0, length: displayFormattedDate.count)
+        return try? NSDataDetector(types: NSTextCheckingResult.CheckingType.date.rawValue)
+            .matches(in: displayFormattedDate, range: range)
+            .compactMap { $0.date }.first
+    }
+    
+    private static func getTimezoneDateFormatter(_ timezone: TimeZone) -> DateFormatter {
         let dateformat = DateFormatter()
         dateformat.dateStyle = .medium
         dateformat.timeStyle = .long
         dateformat.timeZone = timezone
-        return dateformat.string(from: date)
+        return dateformat
     }
     
 }

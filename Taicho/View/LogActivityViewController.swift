@@ -19,7 +19,7 @@ class LogActivityViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        present(LogEntryListViewController(), animated: false)
+        navigationController?.pushViewController(LogEntryListViewController(), animated: false)
     }
     
 }

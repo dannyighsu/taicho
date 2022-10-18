@@ -102,7 +102,7 @@ class LogEntry: NSObject, TaichoEntity {
         // Validate that optional fields do not have unexpected non-nil values.
         let notesValue = coreDataObject.value(forKey: LogEntry.notesKey)
         let notes = notesValue as? String
-        guard notes == nil || notesValue == nil else {
+        guard notes != nil || notesValue == nil else {
             Log.assert("Invalid type found in field.")
             return nil
         }
@@ -123,6 +123,19 @@ class LogEntry: NSObject, TaichoEntity {
         coreDataObject.setValue(timezone.identifier, forKey: LogEntry.timezoneKey)
         coreDataObject.setValue(productivityLevel.rawValue, forKey: LogEntry.productivityKey)
         coreDataObject.setValue(notes, forKey: LogEntry.notesKey)
+    }
+    
+    /**
+     Returns a copy of this object with the values provided.
+     */
+    func copy(name: String, time: Date, timezone: TimeZone, productivityLevel: ProductivityLevel, notes: String?) -> LogEntry {
+        return LogEntry(
+            coreDataObject: coreDataObject,
+            name: name,
+            time: time,
+            timezone: timezone,
+            productivityLevel: productivityLevel,
+            notes: notes)
     }
     
 }

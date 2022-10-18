@@ -44,6 +44,11 @@ class LogEntryDetailViewController: UIViewController {
     private lazy var productivityHeightConstraint = productivityPropertyView.heightAnchor.constraint(equalToConstant: 1000)
     private lazy var notesHeightConstraint = notesPropertyView.heightAnchor.constraint(equalToConstant: 1000)
     
+    // MARK: - Mutable data values
+    private lazy var logTime: Date = logEntry.time
+    private lazy var logTimeZone: TimeZone = logEntry.timezone
+    private lazy var logProductivityLevel: ProductivityLevel = logEntry.productivityLevel
+    
     // MARK: - Initialization
     
     init(logEntry: LogEntry) {
@@ -106,16 +111,49 @@ class LogEntryDetailViewController: UIViewController {
     
     // MARK: - Methods
     
-    @objc func close() {
+    @objc func cancel() {
         dismiss(animated: true, completion: nil)
     }
     
+    @objc func save() {
+        if !validateFields() {
+            present(UIUtils.getErrorAlert("Error! Field value invalid."), animated: true)
+            return
+        }
+        guard let name = namePropertyView.getTextValue() else {
+            present(UIUtils.getErrorAlert("Error! Log must have a name."), animated: true)
+            return
+        }
+        
+        let notes = notesPropertyView.getTextValue()
+        
+        let newLogEntry = logEntry.copy(
+            name: name,
+            time: logTime,
+            timezone: logTimeZone,
+            productivityLevel: logProductivityLevel,
+            notes: notes)
+        
+        newLogEntry.persistCoreData()
+        TaichoContainer.container.persistenceController.saveContext()
+        cancel()
+    }
+    
+    private func validateFields() -> Bool {
+        // TODO
+        return true
+    }
+    
     private func configureNavigationItem() {
+        navigationItem.title = "Edit Log"
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .cancel,
             target: self,
-            action: #selector(close))
-        navigationItem.title = "Edit Log"
+            action: #selector(cancel))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .save,
+            target: self,
+            action: #selector(save))
         if let navigationController = navigationController {
             UIUtils.addDividerToBottomOfView(navigationController.navigationBar)
         }
