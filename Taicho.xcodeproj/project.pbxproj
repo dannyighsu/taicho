@@ -11,8 +11,7 @@
 		4668C9511031320BA12146C3 /* Pods_Taicho.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B00A2764B43A6B37D7B6068B /* Pods_Taicho.framework */; };
 		65C801AE28FA2102000B80C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C801AD28FA2102000B80C6 /* AppDelegate.swift */; };
 		65C801B028FA2102000B80C6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C801AF28FA2102000B80C6 /* SceneDelegate.swift */; };
-		65C801B228FA2102000B80C6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C801B128FA2102000B80C6 /* ViewController.swift */; };
-		65C801B528FA2102000B80C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65C801B328FA2102000B80C6 /* Main.storyboard */; };
+		65C801B228FA2102000B80C6 /* LogEntryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C801B128FA2102000B80C6 /* LogEntryListViewController.swift */; };
 		65C801B828FA2102000B80C6 /* Taicho.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 65C801B628FA2102000B80C6 /* Taicho.xcdatamodeld */; };
 		65C801BA28FA2103000B80C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65C801B928FA2103000B80C6 /* Assets.xcassets */; };
 		65C801BD28FA2103000B80C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65C801BB28FA2103000B80C6 /* LaunchScreen.storyboard */; };
@@ -20,6 +19,22 @@
 		65C801D228FA2104000B80C6 /* TaichoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C801D128FA2104000B80C6 /* TaichoUITests.swift */; };
 		65C801D428FA2104000B80C6 /* TaichoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C801D328FA2104000B80C6 /* TaichoUITestsLaunchTests.swift */; };
 		65C801E128FA227E000B80C6 /* UIUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C801E028FA227E000B80C6 /* UIUtils.swift */; };
+		65C801E328FA2481000B80C6 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C801E228FA2481000B80C6 /* PersistenceController.swift */; };
+		65C801E528FA2541000B80C6 /* TaichoContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C801E428FA2541000B80C6 /* TaichoContainer.swift */; };
+		65C801E928FB39B8000B80C6 /* LogEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C801E828FB39B8000B80C6 /* LogEntry.swift */; };
+		65C801EB28FB3D79000B80C6 /* LogEntryPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C801EA28FB3D79000B80C6 /* LogEntryPreset.swift */; };
+		65C801ED28FB43CB000B80C6 /* EntityField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C801EC28FB43CB000B80C6 /* EntityField.swift */; };
+		65C801F128FB898D000B80C6 /* CoreDataEntityObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C801F028FB898D000B80C6 /* CoreDataEntityObject.swift */; };
+		65C801F328FC7E2C000B80C6 /* TaichoEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C801F228FC7E2C000B80C6 /* TaichoEntity.swift */; };
+		65C801F528FC8317000B80C6 /* LogEntryDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C801F428FC8317000B80C6 /* LogEntryDataManager.swift */; };
+		65C801FB28FC8516000B80C6 /* LogEntryPresetDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C801FA28FC8516000B80C6 /* LogEntryPresetDataManager.swift */; };
+		65C801FE28FC90F7000B80C6 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C801FD28FC90F7000B80C6 /* Log.swift */; };
+		65C8020028FCF8C5000B80C6 /* LogEntryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C801FF28FCF8C5000B80C6 /* LogEntryDetailViewController.swift */; };
+		65C8020228FCFD2D000B80C6 /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C8020128FCFD2D000B80C6 /* UIConstants.swift */; };
+		65C8020528FD0DFD000B80C6 /* Collection+Taicho.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C8020428FD0DFD000B80C6 /* Collection+Taicho.swift */; };
+		65C8020728FD0EE5000B80C6 /* LogActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C8020628FD0EE5000B80C6 /* LogActivityViewController.swift */; };
+		65C8020928FD1DE4000B80C6 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C8020828FD1DE4000B80C6 /* DateUtils.swift */; };
+		65C8020C28FE439A000B80C6 /* LogEntryDetailFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C8020B28FE439A000B80C6 /* LogEntryDetailFieldView.swift */; };
 		EF4ECF8C5035D88A525AA704 /* Pods_TaichoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 544C8F65D41B77308B79595F /* Pods_TaichoUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,8 +64,7 @@
 		65C801AA28FA2102000B80C6 /* Taicho.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Taicho.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65C801AD28FA2102000B80C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		65C801AF28FA2102000B80C6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		65C801B128FA2102000B80C6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		65C801B428FA2102000B80C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		65C801B128FA2102000B80C6 /* LogEntryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogEntryListViewController.swift; sourceTree = "<group>"; };
 		65C801B728FA2102000B80C6 /* Taicho.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Taicho.xcdatamodel; sourceTree = "<group>"; };
 		65C801B928FA2103000B80C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		65C801BC28FA2103000B80C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -61,6 +75,22 @@
 		65C801D128FA2104000B80C6 /* TaichoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaichoUITests.swift; sourceTree = "<group>"; };
 		65C801D328FA2104000B80C6 /* TaichoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaichoUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		65C801E028FA227E000B80C6 /* UIUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIUtils.swift; sourceTree = "<group>"; };
+		65C801E228FA2481000B80C6 /* PersistenceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
+		65C801E428FA2541000B80C6 /* TaichoContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaichoContainer.swift; sourceTree = "<group>"; };
+		65C801E828FB39B8000B80C6 /* LogEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogEntry.swift; sourceTree = "<group>"; };
+		65C801EA28FB3D79000B80C6 /* LogEntryPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogEntryPreset.swift; sourceTree = "<group>"; };
+		65C801EC28FB43CB000B80C6 /* EntityField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityField.swift; sourceTree = "<group>"; };
+		65C801F028FB898D000B80C6 /* CoreDataEntityObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataEntityObject.swift; sourceTree = "<group>"; };
+		65C801F228FC7E2C000B80C6 /* TaichoEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaichoEntity.swift; sourceTree = "<group>"; };
+		65C801F428FC8317000B80C6 /* LogEntryDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogEntryDataManager.swift; sourceTree = "<group>"; };
+		65C801FA28FC8516000B80C6 /* LogEntryPresetDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogEntryPresetDataManager.swift; sourceTree = "<group>"; };
+		65C801FD28FC90F7000B80C6 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		65C801FF28FCF8C5000B80C6 /* LogEntryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogEntryDetailViewController.swift; sourceTree = "<group>"; };
+		65C8020128FCFD2D000B80C6 /* UIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConstants.swift; sourceTree = "<group>"; };
+		65C8020428FD0DFD000B80C6 /* Collection+Taicho.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Taicho.swift"; sourceTree = "<group>"; };
+		65C8020628FD0EE5000B80C6 /* LogActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogActivityViewController.swift; sourceTree = "<group>"; };
+		65C8020828FD1DE4000B80C6 /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
+		65C8020B28FE439A000B80C6 /* LogEntryDetailFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogEntryDetailFieldView.swift; sourceTree = "<group>"; };
 		695F80B79ECAC5DA2777D011 /* Pods-TaichoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaichoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TaichoTests/Pods-TaichoTests.release.xcconfig"; sourceTree = "<group>"; };
 		7268CDCEE6F957892BFE3193 /* Pods-Taicho.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Taicho.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Taicho/Pods-Taicho.debug.xcconfig"; sourceTree = "<group>"; };
 		B00A2764B43A6B37D7B6068B /* Pods_Taicho.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Taicho.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,15 +150,11 @@
 		65C801AC28FA2102000B80C6 /* Taicho */ = {
 			isa = PBXGroup;
 			children = (
-				65C801AD28FA2102000B80C6 /* AppDelegate.swift */,
-				65C801AF28FA2102000B80C6 /* SceneDelegate.swift */,
-				65C801B128FA2102000B80C6 /* ViewController.swift */,
-				65C801E028FA227E000B80C6 /* UIUtils.swift */,
-				65C801B328FA2102000B80C6 /* Main.storyboard */,
-				65C801B928FA2103000B80C6 /* Assets.xcassets */,
-				65C801BB28FA2103000B80C6 /* LaunchScreen.storyboard */,
-				65C801BE28FA2103000B80C6 /* Info.plist */,
-				65C801B628FA2102000B80C6 /* Taicho.xcdatamodeld */,
+				65C801F928FC8396000B80C6 /* Assets */,
+				65C801F828FC8380000B80C6 /* Utils */,
+				65C801F728FC8374000B80C6 /* App */,
+				65C801F628FC836D000B80C6 /* View */,
+				65C801E628FB3988000B80C6 /* Data */,
 			);
 			path = Taicho;
 			sourceTree = "<group>";
@@ -148,6 +174,89 @@
 				65C801D328FA2104000B80C6 /* TaichoUITestsLaunchTests.swift */,
 			);
 			path = TaichoUITests;
+			sourceTree = "<group>";
+		};
+		65C801E628FB3988000B80C6 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				65C801E728FB3993000B80C6 /* Models */,
+				65C801E228FA2481000B80C6 /* PersistenceController.swift */,
+				65C801F428FC8317000B80C6 /* LogEntryDataManager.swift */,
+				65C801FA28FC8516000B80C6 /* LogEntryPresetDataManager.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		65C801E728FB3993000B80C6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				65C801E828FB39B8000B80C6 /* LogEntry.swift */,
+				65C801F028FB898D000B80C6 /* CoreDataEntityObject.swift */,
+				65C801EA28FB3D79000B80C6 /* LogEntryPreset.swift */,
+				65C801EC28FB43CB000B80C6 /* EntityField.swift */,
+				65C801F228FC7E2C000B80C6 /* TaichoEntity.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		65C801F628FC836D000B80C6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				65C8020A28FE438F000B80C6 /* Views */,
+				65C801B128FA2102000B80C6 /* LogEntryListViewController.swift */,
+				65C801FF28FCF8C5000B80C6 /* LogEntryDetailViewController.swift */,
+				65C8020628FD0EE5000B80C6 /* LogActivityViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		65C801F728FC8374000B80C6 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				65C801AD28FA2102000B80C6 /* AppDelegate.swift */,
+				65C801AF28FA2102000B80C6 /* SceneDelegate.swift */,
+				65C801E428FA2541000B80C6 /* TaichoContainer.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		65C801F828FC8380000B80C6 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				65C8020328FD0DEF000B80C6 /* Extension */,
+				65C801E028FA227E000B80C6 /* UIUtils.swift */,
+				65C8020128FCFD2D000B80C6 /* UIConstants.swift */,
+				65C801FD28FC90F7000B80C6 /* Log.swift */,
+				65C8020828FD1DE4000B80C6 /* DateUtils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		65C801F928FC8396000B80C6 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				65C801B928FA2103000B80C6 /* Assets.xcassets */,
+				65C801BB28FA2103000B80C6 /* LaunchScreen.storyboard */,
+				65C801BE28FA2103000B80C6 /* Info.plist */,
+				65C801B628FA2102000B80C6 /* Taicho.xcdatamodeld */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		65C8020328FD0DEF000B80C6 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				65C8020428FD0DFD000B80C6 /* Collection+Taicho.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		65C8020A28FE438F000B80C6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				65C8020B28FE439A000B80C6 /* LogEntryDetailFieldView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		C7AB3B8084B0FBBAB4E86611 /* Pods */ = {
@@ -282,7 +391,6 @@
 			files = (
 				65C801BD28FA2103000B80C6 /* LaunchScreen.storyboard in Resources */,
 				65C801BA28FA2103000B80C6 /* Assets.xcassets in Resources */,
-				65C801B528FA2102000B80C6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,11 +484,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65C801FB28FC8516000B80C6 /* LogEntryPresetDataManager.swift in Sources */,
+				65C801E528FA2541000B80C6 /* TaichoContainer.swift in Sources */,
+				65C801FE28FC90F7000B80C6 /* Log.swift in Sources */,
+				65C8020C28FE439A000B80C6 /* LogEntryDetailFieldView.swift in Sources */,
 				65C801E128FA227E000B80C6 /* UIUtils.swift in Sources */,
-				65C801B228FA2102000B80C6 /* ViewController.swift in Sources */,
+				65C801B228FA2102000B80C6 /* LogEntryListViewController.swift in Sources */,
+				65C801F128FB898D000B80C6 /* CoreDataEntityObject.swift in Sources */,
+				65C801ED28FB43CB000B80C6 /* EntityField.swift in Sources */,
+				65C8020728FD0EE5000B80C6 /* LogActivityViewController.swift in Sources */,
+				65C801F328FC7E2C000B80C6 /* TaichoEntity.swift in Sources */,
+				65C8020228FCFD2D000B80C6 /* UIConstants.swift in Sources */,
 				65C801AE28FA2102000B80C6 /* AppDelegate.swift in Sources */,
+				65C801EB28FB3D79000B80C6 /* LogEntryPreset.swift in Sources */,
+				65C8020528FD0DFD000B80C6 /* Collection+Taicho.swift in Sources */,
+				65C801E328FA2481000B80C6 /* PersistenceController.swift in Sources */,
+				65C801E928FB39B8000B80C6 /* LogEntry.swift in Sources */,
 				65C801B028FA2102000B80C6 /* SceneDelegate.swift in Sources */,
+				65C801F528FC8317000B80C6 /* LogEntryDataManager.swift in Sources */,
+				65C8020928FD1DE4000B80C6 /* DateUtils.swift in Sources */,
 				65C801B828FA2102000B80C6 /* Taicho.xcdatamodeld in Sources */,
+				65C8020028FCF8C5000B80C6 /* LogEntryDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,14 +541,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		65C801B328FA2102000B80C6 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				65C801B428FA2102000B80C6 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		65C801BB28FA2103000B80C6 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -565,7 +681,6 @@
 				INFOPLIST_FILE = Taicho/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -594,7 +709,6 @@
 				INFOPLIST_FILE = Taicho/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

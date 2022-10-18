@@ -8,6 +8,7 @@
 *.perspectivev3
 *.xcuserstate
 *.xcworkspace/
+xcshareddata/
 xcuserdata/
 Pods/
 
