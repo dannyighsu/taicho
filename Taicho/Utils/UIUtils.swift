@@ -20,7 +20,7 @@ class UIUtils {
     
     static func addDividerToBottomOfView(_ view: UIView) {
         let divider = UIView()
-        divider.backgroundColor = .lightGray
+        divider.backgroundColor = .separator
         divider.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(divider)
         NSLayoutConstraint.activate([

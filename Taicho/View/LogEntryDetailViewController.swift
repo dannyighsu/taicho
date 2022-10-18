@@ -16,14 +16,33 @@ class LogEntryDetailViewController: UIViewController {
     // MARK: - Properties
     
     private let logEntry: LogEntry
-    private let nameLabel = UILabel()
-    private let nameField = UITextField()
-    private let timeLabel = UILabel()
-    private let timeField = UITextField()
-    private let productivityLabel = UILabel()
-    private let productivityField = UITextField()
-    private let notesLabel = UILabel()
-    private let notesTextView = UITextView()
+    
+    private lazy var namePropertyView = LogEntryDetailPropertyView(
+        delegate: self,
+        labelTitle: "Name",
+        textPrefill: logEntry.name,
+        useTextView: true)
+    private lazy var timePropertyView = LogEntryDetailPropertyView(
+        delegate: self,
+        labelTitle: "Time",
+        textPrefill: DateUtils.getDisplayFormat(logEntry.time),
+        useTextView: true)
+    private lazy var productivityPropertyView = LogEntryDetailPropertyView(
+        delegate: self,
+        labelTitle: "Productivity Level",
+        textPrefill: logEntry.productivityLevel.displayName,
+        useTextView: true)
+    private lazy var notesPropertyView = LogEntryDetailPropertyView(
+        delegate: self,
+        labelTitle: "Notes",
+        textPrefill: logEntry.notes,
+        useTextView: true)
+    
+    // These are defaulted to 1000 just to ignore the annoying constraint break warning. In reality they're dynamically sized.
+    private lazy var nameHeightConstraint = namePropertyView.heightAnchor.constraint(equalToConstant: 1000)
+    private lazy var timeHeightConstraint = timePropertyView.heightAnchor.constraint(equalToConstant: 1000)
+    private lazy var productivityHeightConstraint = productivityPropertyView.heightAnchor.constraint(equalToConstant: 1000)
+    private lazy var notesHeightConstraint = notesPropertyView.heightAnchor.constraint(equalToConstant: 1000)
     
     // MARK: - Initialization
     
@@ -41,55 +60,31 @@ class LogEntryDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         
-        [nameLabel, nameField, timeLabel, timeField, productivityLabel, productivityField, notesLabel, notesTextView]
-            .forEach {
-                $0.translatesAutoresizingMaskIntoConstraints = false
-                view.addSubview($0)
-                view.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-            }
+        [namePropertyView, timePropertyView, productivityPropertyView, notesPropertyView].forEach {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview($0)
+            NSLayoutConstraint.activate([
+                $0.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: UIConstants.sideMargin),
+                $0.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -UIConstants.sideMargin)
+            ])
+        }
         
-        [nameField, timeField, productivityField].forEach { $0.textAlignment = .center }
-        
-        nameField.delegate = self
         NSLayoutConstraint.activate([
-            nameLabel.heightAnchor.constraint(equalToConstant: UIConstants.textFieldHeight),
-            nameLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: UIConstants.verticalMargin),
-            nameField.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -2 * UIConstants.sideMargin),
-            nameField.heightAnchor.constraint(equalToConstant: UIConstants.textFieldHeight),
-            nameField.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: UIConstants.interItemSpacing)
+            nameHeightConstraint,
+            timeHeightConstraint,
+            productivityHeightConstraint,
+            notesHeightConstraint,
+            namePropertyView.topAnchor.constraint(
+                equalTo: view.topAnchor, constant: UIConstants.verticalMargin),
+            timePropertyView.topAnchor.constraint(
+                equalTo: namePropertyView.bottomAnchor, constant: UIConstants.interSectionSpacing),
+            productivityPropertyView.topAnchor.constraint(
+                equalTo: timePropertyView.bottomAnchor, constant: UIConstants.interSectionSpacing),
+            notesPropertyView.topAnchor.constraint(
+                equalTo: productivityPropertyView.bottomAnchor, constant: UIConstants.interSectionSpacing)
         ])
-        
-        timeField.delegate = self
-        NSLayoutConstraint.activate([
-            timeLabel.heightAnchor.constraint(equalToConstant: UIConstants.textFieldHeight),
-            timeLabel.topAnchor.constraint(equalTo: nameField.bottomAnchor, constant: UIConstants.interSectionSpacing),
-            timeField.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -2 * UIConstants.sideMargin),
-            timeField.heightAnchor.constraint(equalToConstant: UIConstants.textFieldHeight),
-            timeField.topAnchor.constraint(equalTo: timeLabel.bottomAnchor, constant: UIConstants.interItemSpacing)
-        ])
-        
-        productivityField.delegate = self
-        NSLayoutConstraint.activate([
-            productivityLabel.heightAnchor.constraint(equalToConstant: UIConstants.textFieldHeight),
-            productivityLabel.topAnchor.constraint(equalTo: timeField.bottomAnchor, constant: UIConstants.interSectionSpacing),
-            productivityField.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -2 * UIConstants.sideMargin),
-            productivityField.heightAnchor.constraint(equalToConstant: UIConstants.textFieldHeight),
-            productivityField.topAnchor.constraint(equalTo: productivityLabel.bottomAnchor, constant: UIConstants.interItemSpacing)
-        ])
-        
-        notesTextView.delegate = self
-        NSLayoutConstraint.activate([
-            notesLabel.heightAnchor.constraint(equalToConstant: UIConstants.textFieldHeight),
-            notesLabel.topAnchor.constraint(equalTo: productivityField.bottomAnchor, constant: UIConstants.interSectionSpacing),
-            notesTextView.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -2 * UIConstants.sideMargin),
-            notesTextView.topAnchor.constraint(equalTo: notesLabel.bottomAnchor, constant: UIConstants.interItemSpacing),
-            notesTextView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
-        
-        configureLabels()
-        updateFieldsFromLogEntry()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -97,27 +92,22 @@ class LogEntryDetailViewController: UIViewController {
         configureNavigationItem()
     }
     
-    // MARK: - Methods
-    
-    /**
-     Updates the displayed fields with data from the log entry.
-     */
-    func updateFieldsFromLogEntry() {
-        nameField.text = logEntry.name
-        timeField.text = DateUtils.getDisplayFormat(logEntry.time)
-        productivityField.text = logEntry.productivityLevel.displayName
-        notesTextView.text = logEntry.notes
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        // Update height constraints based on new view widths.
+        [(nameHeightConstraint, namePropertyView),
+         (timeHeightConstraint, timePropertyView),
+         (productivityHeightConstraint, productivityPropertyView),
+         (notesHeightConstraint, notesPropertyView)].forEach { (constraint, view) in
+            constraint.constant = view.heightRequired
+        }
     }
+    
+    // MARK: - Methods
     
     @objc func close() {
         dismiss(animated: true, completion: nil)
-    }
-    
-    private func configureLabels() {
-        nameLabel.text = "Name"
-        timeLabel.text = "Started At"
-        productivityLabel.text = "Productivity Level"
-        notesLabel.text = "Notes"
     }
     
     private func configureNavigationItem() {
@@ -125,6 +115,7 @@ class LogEntryDetailViewController: UIViewController {
             barButtonSystemItem: .cancel,
             target: self,
             action: #selector(close))
+        navigationItem.title = "Edit Log"
         if let navigationController = navigationController {
             UIUtils.addDividerToBottomOfView(navigationController.navigationBar)
         }
@@ -132,13 +123,7 @@ class LogEntryDetailViewController: UIViewController {
     
 }
 
-extension LogEntryDetailViewController: UITextFieldDelegate {
-    
-    
-    
-}
-
-extension LogEntryDetailViewController: UITextViewDelegate {
+extension LogEntryDetailViewController: LogEntryDetailPropertyViewDelegate {
     
     
     
