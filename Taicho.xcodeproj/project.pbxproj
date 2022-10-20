@@ -37,6 +37,8 @@
 		65C8020C28FE439A000B80C6 /* LogEntryDetailPropertyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C8020B28FE439A000B80C6 /* LogEntryDetailPropertyView.swift */; };
 		65C8020E28FE5C80000B80C6 /* CGSize+Taicho.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C8020D28FE5C80000B80C6 /* CGSize+Taicho.swift */; };
 		65C8021028FE6101000B80C6 /* UIEdgeInsets+Taicho.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C8020F28FE6101000B80C6 /* UIEdgeInsets+Taicho.swift */; };
+		65C8021428FF8A70000B80C6 /* UITextView+Taicho.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C8021328FF8A70000B80C6 /* UITextView+Taicho.swift */; };
+		65C8021728FFA651000B80C6 /* LogEntryListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C8021628FFA651000B80C6 /* LogEntryListCellViewModel.swift */; };
 		EF4ECF8C5035D88A525AA704 /* Pods_TaichoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 544C8F65D41B77308B79595F /* Pods_TaichoUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -95,6 +97,8 @@
 		65C8020B28FE439A000B80C6 /* LogEntryDetailPropertyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogEntryDetailPropertyView.swift; sourceTree = "<group>"; };
 		65C8020D28FE5C80000B80C6 /* CGSize+Taicho.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+Taicho.swift"; sourceTree = "<group>"; };
 		65C8020F28FE6101000B80C6 /* UIEdgeInsets+Taicho.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIEdgeInsets+Taicho.swift"; sourceTree = "<group>"; };
+		65C8021328FF8A70000B80C6 /* UITextView+Taicho.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Taicho.swift"; sourceTree = "<group>"; };
+		65C8021628FFA651000B80C6 /* LogEntryListCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogEntryListCellViewModel.swift; sourceTree = "<group>"; };
 		695F80B79ECAC5DA2777D011 /* Pods-TaichoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaichoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TaichoTests/Pods-TaichoTests.release.xcconfig"; sourceTree = "<group>"; };
 		7268CDCEE6F957892BFE3193 /* Pods-Taicho.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Taicho.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Taicho/Pods-Taicho.debug.xcconfig"; sourceTree = "<group>"; };
 		B00A2764B43A6B37D7B6068B /* Pods_Taicho.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Taicho.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -206,6 +210,7 @@
 		65C801F628FC836D000B80C6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				65C8021528FFA63F000B80C6 /* ViewModel */,
 				65C8020A28FE438F000B80C6 /* Views */,
 				65C801B128FA2102000B80C6 /* LogEntryListViewController.swift */,
 				65C801FF28FCF8C5000B80C6 /* LogEntryDetailViewController.swift */,
@@ -253,6 +258,7 @@
 				65C8020428FD0DFD000B80C6 /* Collection+Taicho.swift */,
 				65C8020D28FE5C80000B80C6 /* CGSize+Taicho.swift */,
 				65C8020F28FE6101000B80C6 /* UIEdgeInsets+Taicho.swift */,
+				65C8021328FF8A70000B80C6 /* UITextView+Taicho.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -263,6 +269,14 @@
 				65C8020B28FE439A000B80C6 /* LogEntryDetailPropertyView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		65C8021528FFA63F000B80C6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				65C8021628FFA651000B80C6 /* LogEntryListCellViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		C7AB3B8084B0FBBAB4E86611 /* Pods */ = {
@@ -299,6 +313,7 @@
 				65C801A628FA2102000B80C6 /* Sources */,
 				65C801A728FA2102000B80C6 /* Frameworks */,
 				65C801A828FA2102000B80C6 /* Resources */,
+				53415388251F7206BCB25307 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -439,6 +454,32 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		53415388251F7206BCB25307 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Taicho/Pods-Taicho-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Taicho/Pods-Taicho-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		D5592827D809BA9E6E443053 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -491,6 +532,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				65C801FB28FC8516000B80C6 /* LogEntryPresetDataManager.swift in Sources */,
+				65C8021728FFA651000B80C6 /* LogEntryListCellViewModel.swift in Sources */,
 				65C801E528FA2541000B80C6 /* TaichoContainer.swift in Sources */,
 				65C801FE28FC90F7000B80C6 /* Log.swift in Sources */,
 				65C8020C28FE439A000B80C6 /* LogEntryDetailPropertyView.swift in Sources */,
@@ -509,6 +551,7 @@
 				65C801E928FB39B8000B80C6 /* LogEntry.swift in Sources */,
 				65C8021028FE6101000B80C6 /* UIEdgeInsets+Taicho.swift in Sources */,
 				65C801B028FA2102000B80C6 /* SceneDelegate.swift in Sources */,
+				65C8021428FF8A70000B80C6 /* UITextView+Taicho.swift in Sources */,
 				65C801F528FC8317000B80C6 /* LogEntryDataManager.swift in Sources */,
 				65C8020928FD1DE4000B80C6 /* DateUtils.swift in Sources */,
 				65C801B828FA2102000B80C6 /* Taicho.xcdatamodeld in Sources */,

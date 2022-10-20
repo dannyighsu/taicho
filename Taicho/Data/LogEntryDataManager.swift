@@ -29,7 +29,7 @@ class LogEntryDataManager: NSObject {
             timezone: TimeZone.current,
             productivityLevel: productivityLevel,
             notes: notes)
-        logEntry.persistCoreData()
+        logEntry?.persistCoreData()
         return logEntry
     }
     

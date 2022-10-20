@@ -20,34 +20,28 @@ class LogEntryDetailViewController: UIViewController {
     private lazy var namePropertyView = LogEntryDetailPropertyView(
         delegate: self,
         labelTitle: "Name",
-        textPrefill: logEntry.name,
-        useTextView: true)
+        textPrefill: logEntry.name)
     private lazy var timePropertyView = LogEntryDetailPropertyView(
         delegate: self,
         labelTitle: "Time",
-        textPrefill: DateUtils.getDisplayFormat(logEntry.time),
-        useTextView: true)
+        textPrefill: DateUtils.getDisplayFormat(logEntry.time))
     private lazy var productivityPropertyView = LogEntryDetailPropertyView(
         delegate: self,
         labelTitle: "Productivity Level",
-        textPrefill: logEntry.productivityLevel.displayName,
-        useTextView: true)
+        textPrefill: logEntry.productivityLevel.displayName)
     private lazy var notesPropertyView = LogEntryDetailPropertyView(
         delegate: self,
         labelTitle: "Notes",
-        textPrefill: logEntry.notes,
-        useTextView: true)
+        textPrefill: logEntry.notes)
+    private var allPropertyViews: [LogEntryDetailPropertyView] {
+        return [namePropertyView, timePropertyView, productivityPropertyView, notesPropertyView]
+    }
     
     // These are defaulted to 1000 just to ignore the annoying constraint break warning. In reality they're dynamically sized.
     private lazy var nameHeightConstraint = namePropertyView.heightAnchor.constraint(equalToConstant: 1000)
     private lazy var timeHeightConstraint = timePropertyView.heightAnchor.constraint(equalToConstant: 1000)
     private lazy var productivityHeightConstraint = productivityPropertyView.heightAnchor.constraint(equalToConstant: 1000)
     private lazy var notesHeightConstraint = notesPropertyView.heightAnchor.constraint(equalToConstant: 1000)
-    
-    // MARK: - Mutable data values
-    private lazy var logTime: Date = logEntry.time
-    private lazy var logTimeZone: TimeZone = logEntry.timezone
-    private lazy var logProductivityLevel: ProductivityLevel = logEntry.productivityLevel
     
     // MARK: - Initialization
     
@@ -67,7 +61,7 @@ class LogEntryDetailViewController: UIViewController {
     
         view.backgroundColor = .systemBackground
         
-        [namePropertyView, timePropertyView, productivityPropertyView, notesPropertyView].forEach {
+        allPropertyViews.forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview($0)
             NSLayoutConstraint.activate([
@@ -116,25 +110,14 @@ class LogEntryDetailViewController: UIViewController {
     }
     
     @objc func save() {
+        allPropertyViews.forEach { $0.resignFirstResponder() }
+        
         if !validateFields() {
             present(UIUtils.getErrorAlert("Error! Field value invalid."), animated: true)
             return
         }
-        guard let name = namePropertyView.getTextValue() else {
-            present(UIUtils.getErrorAlert("Error! Log must have a name."), animated: true)
-            return
-        }
         
-        let notes = notesPropertyView.getTextValue()
-        
-        let newLogEntry = logEntry.copy(
-            name: name,
-            time: logTime,
-            timezone: logTimeZone,
-            productivityLevel: logProductivityLevel,
-            notes: notes)
-        
-        newLogEntry.persistCoreData()
+        logEntry.persistCoreData()
         TaichoContainer.container.persistenceController.saveContext()
         cancel()
     }
@@ -163,6 +146,34 @@ class LogEntryDetailViewController: UIViewController {
 
 extension LogEntryDetailViewController: LogEntryDetailPropertyViewDelegate {
     
-    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        switch textView {
+        case namePropertyView.propertyTextView:
+            guard let name = namePropertyView.propertyTextView.text else {
+                present(UIUtils.getErrorAlert("Error! Log must have a name."), animated: true)
+                return
+            }
+            logEntry.name = name
+        case timePropertyView.propertyTextView:
+            guard let timeString = timePropertyView.propertyTextView.text,
+                  let dateTime = DateUtils.getDate(from: timeString) else {
+                      Log.assert("Error setting new time")
+                      return
+                  }
+            
+            logEntry.time = dateTime
+        case productivityPropertyView.propertyTextView:
+            guard let productivityString = productivityPropertyView.propertyTextView.text else {
+                Log.assert("Failed to get productivity string")
+                return
+            }
+            logEntry.productivityLevel = ProductivityLevel.value(from: productivityString)
+        case notesPropertyView.propertyTextView:
+            logEntry.notes = notesPropertyView.propertyTextView.text
+        default:
+            Log.assert("Unknown textview found.")
+            return
+        }
+    }
     
 }

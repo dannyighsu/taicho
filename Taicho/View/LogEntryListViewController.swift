@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 /**
  The base ViewController for viewing, filteirng, and editing log entries. Log entries will have display options.
@@ -15,7 +16,13 @@ class LogEntryListViewController: UIViewController {
     // MARK: - Properties
     
     private let tableView = UITableView()
-    private var logEntries: [LogEntry] = []
+    
+    @Published private var viewModels: [LogEntryListCellViewModel] = []
+    /**
+     The reactive stream for the viewModels array. Will cause an update
+     to the table view with the array membership is updated.
+     */
+    private var viewModelStream: AnyCancellable?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,12 +32,17 @@ class LogEntryListViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         NSLayoutConstraint.activate([
             tableView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             tableView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             tableView.widthAnchor.constraint(equalTo: view.widthAnchor),
             tableView.heightAnchor.constraint(equalTo: view.heightAnchor)
         ])
+        
+        viewModelStream = $viewModels.receive(on: DispatchQueue.main).sink { [weak self] _ in
+            self?.updateData()
+        }
         
         //        TaichoContainer.container.logEntryDataManager.createNewLogStartingNow("Hello!", productivityLevel: .high, notes: nil)
         //        TaichoContainer.container.persistenceController.saveContext()
@@ -39,12 +51,18 @@ class LogEntryListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        updateData()
+        loadViewModels(with: TaichoContainer.container.logEntryDataManager.getAllLogEntries())
     }
     
-    func updateData() {
-        logEntries = TaichoContainer.container.logEntryDataManager.getAllLogEntries()
+    private func updateData() {
         tableView.reloadData()
+    }
+    
+    private func loadViewModels(with logEntries: [LogEntry]) {
+        viewModels = logEntries.map { LogEntryListCellViewModel($0) }
+        viewModels.forEach { viewModel in
+            viewModel.delegate = self
+        }
     }
 
 }
@@ -54,28 +72,38 @@ class LogEntryListViewController: UIViewController {
 extension LogEntryListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return logEntries.count
+        return viewModels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let logEntry = logEntries[safe: indexPath.row] else {
-            Log.assert("Missing entry for index path: \(indexPath)")
+        guard let viewModel = viewModels[safe: indexPath.row] else {
+            Log.assert("Missing view model for index path: \(indexPath)")
             return UITableViewCell()
         }
         let cell = UITableViewCell()
-        cell.textLabel!.text = logEntry.name
+        cell.textLabel!.text = viewModel.logEntry.name
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let logEntry = logEntries[safe: indexPath.row] else {
-            Log.assert("Missing entry for index path: \(indexPath)")
+        guard let viewModel = viewModels[safe: indexPath.row] else {
+            Log.assert("Missing view model for index path: \(indexPath)")
             return
         }
         let navigationController = UINavigationController(
-            rootViewController: LogEntryDetailViewController(logEntry: logEntry))
+            rootViewController: LogEntryDetailViewController(logEntry: viewModel.logEntry))
         present(navigationController, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+}
+
+// MARK: - LogEntryListCellViewModelDelegate
+
+extension LogEntryListViewController: LogEntryListCellViewModelDelegate {
+    
+    func logEntryDidUpdate(_ logEntry: LogEntry) {
+        updateData()
     }
     
 }

@@ -30,7 +30,7 @@ class LogEntryDetailPropertyView: UIView {
     private weak var delegate: LogEntryDetailPropertyViewDelegate?
     
     private let propertyLabel = UILabel()
-    private let propertyTextView = UITextView()
+    let propertyTextView = UITextView()
     
     /**
      - param useTextView: If true, will allow for long-format input via a textview.
@@ -47,14 +47,6 @@ class LogEntryDetailPropertyView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    func setText(_ text: String) {
-        propertyTextView.text = text
-    }
-    
-    func getTextValue() -> String? {
-        return propertyTextView.text
     }
     
     private func configureViews(with labelTitle: String, textPrefill: String?, textPlaceholder: String?) {
@@ -81,6 +73,7 @@ class LogEntryDetailPropertyView: UIView {
         propertyTextView.layer.borderColor = UIColor.separator.cgColor
         propertyTextView.layer.borderWidth = 1.0
         propertyTextView.textContainerInset = UIEdgeInsets.defaultTextInsets
+        propertyTextView.addDoneButtonOnKeyboard()
         propertyTextView.delegate = delegate
         
         NSLayoutConstraint.activate([

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RxSwift
 
 /**
  A Taicho entity data object.

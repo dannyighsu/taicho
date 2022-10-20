@@ -6,6 +6,8 @@ target 'Taicho' do
   use_frameworks!
 
   # Pods for Taicho
+  pod 'RxSwift', '6.5.0'
+  pod 'RxCocoa', '6.5.0'
 
   target 'TaichoTests' do
     inherit! :search_paths

@@ -7,11 +7,17 @@
 
 import Foundation
 import CoreData
+import RxSwift
 
 /**
  A semantic measurement of the productivity of the activity.
  */
 enum ProductivityLevel: String {
+    
+    private static let highProductivityDisplayString = "High"
+    private static let medProductivityDisplayString = "Medium"
+    private static let lowProductivityDisplayString = "Low"
+    private static let noProductivityDisplayString = "Not Productive"
     
     case high
     case medium
@@ -21,13 +27,29 @@ enum ProductivityLevel: String {
     var displayName: String {
         switch self {
         case .high:
-            return "High"
+            return Self.highProductivityDisplayString
         case .medium:
-            return "Medium"
+            return Self.medProductivityDisplayString
         case .low:
-            return "Low"
+            return Self.lowProductivityDisplayString
         case .none:
-            return "Not Productive"
+            return Self.noProductivityDisplayString
+        }
+    }
+    
+    static func value(from displayString: String) -> Self {
+        switch displayString {
+        case highProductivityDisplayString:
+            return .high
+        case medProductivityDisplayString:
+            return .medium
+        case lowProductivityDisplayString:
+            return .low
+        case noProductivityDisplayString:
+            return .none
+        default:
+            Log.assert("Failed to initialize from display string: \(displayString)")
+            return .none
         }
     }
     
@@ -47,41 +69,62 @@ class LogEntry: NSObject, TaichoEntity {
     fileprivate static let productivityKey = "productivity"
     fileprivate static let notesKey = "notes"
     
-    var coreDataObject: CoreDataEntityObject
+    /**
+     The underlying core data object, if any.
+     If this log does not contain a core data object, it is considered memory-only and will not
+     update from or persist to disk.
+     */
+    private let coreDataObjectObservable: BehaviorSubject<CoreDataObject>
+    let coreDataObject: CoreDataEntityObject
     
     /**
      The name of the log entry. This is a human-readable string meant to identify the activity this log captures.
      */
-    let name: String
+    @objc
+    var name: String
     
     /**
      The time that the activity this log entry represents commenced.
      */
-    let time: Date
+    var time: Date
     
     /**
      The timezone that this entry was created in.
      */
-    let timezone: TimeZone
+    var timezone: TimeZone
     
     /**
      The productivity level of the entry.
      */
-    let productivityLevel: ProductivityLevel
+    var productivityLevel: ProductivityLevel
     
     /**
      Custom notes the user may add to the entry.
      */
-    let notes: String?
+    var notes: String?
     
-    required init(coreDataObject: CoreDataEntityObject, name: String, time: Date, timezone: TimeZone, productivityLevel: ProductivityLevel, notes: String?) {
+    required init?(coreDataObject: CoreDataEntityObject,
+                  name: String,
+                  time: Date,
+                  timezone: TimeZone,
+                  productivityLevel: ProductivityLevel,
+                  notes: String?) {
+        guard let coreDataObject = coreDataObject as? CoreDataObject else {
+            Log.assert("Incorrect core data object type passed in: \(coreDataObject)")
+            return nil
+        }
         self.coreDataObject = coreDataObject
+        self.coreDataObjectObservable = BehaviorSubject(value: coreDataObject)
         self.name = name
         self.time = time
         self.timezone = timezone
         self.productivityLevel = productivityLevel
         self.notes = notes
         super.init()
+        
+        let _ = self.coreDataObjectObservable.subscribe { [weak self] observedObject in
+            self?.load(observedObject)
+        }
     }
     
     convenience init?(_ managedObject: NSManagedObject) {
@@ -123,12 +166,14 @@ class LogEntry: NSObject, TaichoEntity {
         coreDataObject.setValue(timezone.identifier, forKey: LogEntry.timezoneKey)
         coreDataObject.setValue(productivityLevel.rawValue, forKey: LogEntry.productivityKey)
         coreDataObject.setValue(notes, forKey: LogEntry.notesKey)
+        
+        TaichoContainer.container.persistenceController.saveContext()
     }
     
     /**
      Returns a copy of this object with the values provided.
      */
-    func copy(name: String, time: Date, timezone: TimeZone, productivityLevel: ProductivityLevel, notes: String?) -> LogEntry {
+    func copy(name: String, time: Date, timezone: TimeZone, productivityLevel: ProductivityLevel, notes: String?) -> LogEntry? {
         return LogEntry(
             coreDataObject: coreDataObject,
             name: name,
@@ -136,6 +181,35 @@ class LogEntry: NSObject, TaichoEntity {
             timezone: timezone,
             productivityLevel: productivityLevel,
             notes: notes)
+    }
+    
+    /**
+     Updates the object's fields with the provided core data object.
+     */
+    private func load(_ coreDataObject: CoreDataObject) {
+        guard let name = coreDataObject.value(forKey: LogEntry.nameKey) as? String,
+              let time = coreDataObject.value(forKey: LogEntry.timeKey) as? Date,
+              let timezoneString = coreDataObject.value(forKey: LogEntry.timezoneKey) as? String,
+              let timezone = TimeZone(identifier: timezoneString),
+              let productivityString = coreDataObject.value(forKey: LogEntry.productivityKey) as? String,
+              let productivityLevel = ProductivityLevel(rawValue: productivityString) else {
+                  Log.assert("Failed to initalize with core data object!")
+                  return
+              }
+        
+        // Validate that optional fields do not have unexpected non-nil values.
+        let notesValue = coreDataObject.value(forKey: LogEntry.notesKey)
+        let notes = notesValue as? String
+        guard notes != nil || notesValue == nil else {
+            Log.assert("Invalid type found in field.")
+            return
+        }
+        
+        self.name = name
+        self.time = time
+        self.timezone = timezone
+        self.productivityLevel = productivityLevel
+        self.notes = notes
     }
     
 }
@@ -149,6 +223,7 @@ fileprivate class CoreDataObject: NSManagedObject, CoreDataEntityObject {
         return "LogEntryCoreDataObject"
     }
     
+    // TODO: Need to send updates when fields are updated
     @NSManaged var name: String
     @NSManaged var time: Date
     @NSManaged var timezone: String
