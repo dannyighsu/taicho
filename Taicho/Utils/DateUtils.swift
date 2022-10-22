@@ -20,6 +20,14 @@ struct DateUtils {
     static func getDisplayFormat(_ date: Date, inTimezone timezone: TimeZone) -> String {
         return getTimezoneDateFormatter(timezone).string(from: date)
     }
+
+    static func getShortDisplay(_ date: Date) -> String {
+        let dateformat = DateFormatter()
+        dateformat.dateStyle = .short
+        dateformat.timeStyle = .short
+        dateformat.locale = Locale.current
+        return dateformat.string(from: date)
+    }
     
     static func getDate(from displayFormattedDate: String) -> Date? {
         let range = NSRange(location: 0, length: displayFormattedDate.count)

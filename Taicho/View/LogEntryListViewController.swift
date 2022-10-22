@@ -37,7 +37,7 @@ class LogEntryListViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        tableView.register(LogEntryListCell.self, forCellReuseIdentifier: LogEntryListCell.reuseIdentifier)
         NSLayoutConstraint.activate([
             tableView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             tableView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
@@ -93,14 +93,27 @@ extension LogEntryListViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModels.count
     }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        guard let viewModel = viewModels[safe: indexPath.row] else {
+            Log.assert("Missing view model for index path: \(indexPath)")
+            return 0
+        }
+        return LogEntryListCell.requiredHeight(for: viewModel.logEntry)
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let viewModel = viewModels[safe: indexPath.row] else {
             Log.assert("Missing view model for index path: \(indexPath)")
             return UITableViewCell()
         }
-        let cell = UITableViewCell()
-        cell.textLabel!.text = viewModel.logEntry.name
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: LogEntryListCell.reuseIdentifier) as? LogEntryListCell else {
+            Log.assert("Invalid cell type dequeued")
+            return UITableViewCell()
+        }
+
+        cell.load(viewModel)
+
         return cell
     }
     

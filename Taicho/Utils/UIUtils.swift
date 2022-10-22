@@ -31,7 +31,7 @@ class UIUtils {
         ])
     }
     
-    static func height(for text: String, withConstrainedWidth width: CGFloat, font: UIFont) -> CGFloat {
+    static func height(for text: String, font: UIFont, constrainingWidth width: CGFloat = .greatestFiniteMagnitude) -> CGFloat {
         let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
         let boundingBox = text.boundingRect(
             with: constraintRect,
@@ -42,7 +42,7 @@ class UIUtils {
         return ceil(boundingBox.height)
     }
     
-    static func width(for text: String, withConstrainedHeight height: CGFloat, font: UIFont) -> CGFloat {
+    static func width(for text: String, font: UIFont, constrainingHeight height: CGFloat = .greatestFiniteMagnitude) -> CGFloat {
         let constraintRect = CGSize(width: .greatestFiniteMagnitude, height: height)
         let boundingBox = text.boundingRect(
             with: constraintRect,

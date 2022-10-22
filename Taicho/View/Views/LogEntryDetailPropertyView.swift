@@ -23,7 +23,7 @@ class LogEntryDetailPropertyView: UIView {
      */
     var heightRequired: CGFloat {
         return UIConstants.interItemSpacing * 3
-        + propertyLabel.sizeThatFits(CGSize.greatestFiniteSize).height
+        + propertyLabel.requiredHeight
         + propertyTextView.sizeThatFits(CGSize.greatestFiniteSize).height
     }
     
@@ -58,7 +58,7 @@ class LogEntryDetailPropertyView: UIView {
                 $0.trailingAnchor.constraint(equalTo: trailingAnchor)
             ])
         }
-                
+
         // Configure label
         propertyLabel.text = labelTitle
         propertyLabel.font = .boldSystemFont(ofSize: UIFont.labelFontSize)
