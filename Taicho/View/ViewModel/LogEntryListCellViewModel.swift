@@ -16,7 +16,11 @@ protocol LogEntryListCellViewModelDelegate: AnyObject {
 
 class LogEntryListCellViewModel: NSObject {
     
-    let logEntry: LogEntry
+    var logEntry: LogEntry {
+        didSet {
+            logEntrySubject.send(logEntry)
+        }
+    }
     weak var delegate: LogEntryListCellViewModelDelegate?
     /**
      Publishes updates to the `LogEntry`.
@@ -26,11 +30,6 @@ class LogEntryListCellViewModel: NSObject {
     }
     
     private let logEntrySubject = PassthroughSubject<LogEntry, Never>()
-    private lazy var namePublisher = logEntry.publisher(for: \.name).sink() { [weak self] _ in
-        guard let self = self else { return }
-        self.logEntrySubject.send(self.logEntry)
-        self.delegate?.logEntryDidUpdate(self.logEntry)
-    }
     
     init(_ logEntry: LogEntry) {
         self.logEntry = logEntry

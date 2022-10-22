@@ -7,7 +7,7 @@
 
 import Foundation
 import CoreData
-import RxSwift
+import Combine
 
 /**
  A semantic measurement of the productivity of the activity.
@@ -58,178 +58,94 @@ enum ProductivityLevel: String {
 /**
  Represents a single entry in the log, representing one activity the user engaged in.
  */
-class LogEntry: NSObject, TaichoEntity {
+@objc(LogEntry)
+class LogEntry: NSManagedObject, TaichoEntity {
+
+    // MARK: - Class Properties
     
-    static var coreDataObjectType: CoreDataEntityObject.Type {
-        return CoreDataObject.self
+    static var objectName: String {
+        return "LogEntry"
     }
+
     fileprivate static let nameKey = "name"
     fileprivate static let timeKey = "time"
     fileprivate static let timezoneKey = "timezone"
     fileprivate static let productivityKey = "productivity"
     fileprivate static let notesKey = "notes"
-    
-    /**
-     The underlying core data object, if any.
-     If this log does not contain a core data object, it is considered memory-only and will not
-     update from or persist to disk.
-     */
-    private let coreDataObjectObservable: BehaviorSubject<CoreDataObject>
-    let coreDataObject: CoreDataEntityObject
-    
+
+    // MARK: - Properties
+
     /**
      The name of the log entry. This is a human-readable string meant to identify the activity this log captures.
      */
-    @objc
-    var name: String
-    
+    @NSManaged private var storedName: String
     /**
      The time that the activity this log entry represents commenced.
      */
-    var time: Date
-    
+    @NSManaged private var storedTime: Date
     /**
      The timezone that this entry was created in.
      */
-    var timezone: TimeZone
-    
+    @NSManaged private var storedTimezone: String
     /**
      The productivity level of the entry.
      */
-    var productivityLevel: ProductivityLevel
-    
+    @NSManaged private var storedProductivityLevel: String
     /**
      Custom notes the user may add to the entry.
      */
-    var notes: String?
-    
-    required init?(coreDataObject: CoreDataEntityObject,
-                  name: String,
-                  time: Date,
-                  timezone: TimeZone,
-                  productivityLevel: ProductivityLevel,
-                  notes: String?) {
-        guard let coreDataObject = coreDataObject as? CoreDataObject else {
-            Log.assert("Incorrect core data object type passed in: \(coreDataObject)")
-            return nil
-        }
-        self.coreDataObject = coreDataObject
-        self.coreDataObjectObservable = BehaviorSubject(value: coreDataObject)
-        self.name = name
-        self.time = time
-        self.timezone = timezone
-        self.productivityLevel = productivityLevel
-        self.notes = notes
-        super.init()
-        
-        let _ = self.coreDataObjectObservable.subscribe { [weak self] observedObject in
-            self?.load(observedObject)
-        }
-    }
-    
-    convenience init?(_ managedObject: NSManagedObject) {
-        guard let coreDataObject = managedObject as? CoreDataObject else {
-            Log.assert("Incorrect core data object type passed in: \(managedObject)")
-            return nil
-        }
-        guard let name = coreDataObject.value(forKey: LogEntry.nameKey) as? String,
-              let time = coreDataObject.value(forKey: LogEntry.timeKey) as? Date,
-              let timezoneString = coreDataObject.value(forKey: LogEntry.timezoneKey) as? String,
-              let timezone = TimeZone(identifier: timezoneString),
-              let productivityString = coreDataObject.value(forKey: LogEntry.productivityKey) as? String,
-              let productivityLevel = ProductivityLevel(rawValue: productivityString) else {
-                  Log.assert("Failed to initalize with core data object!")
-                  return nil
-              }
-        
-        // Validate that optional fields do not have unexpected non-nil values.
-        let notesValue = coreDataObject.value(forKey: LogEntry.notesKey)
-        let notes = notesValue as? String
-        guard notes != nil || notesValue == nil else {
-            Log.assert("Invalid type found in field.")
-            return nil
-        }
-        self.init(
-            coreDataObject: coreDataObject,
-            name: name,
-            time: time,
-            timezone: timezone,
-            productivityLevel: productivityLevel,
-            notes: notes)
-    }
-    
-    // MARK: - Methods
-    
-    func persistCoreData() {
-        coreDataObject.setValue(name, forKey: LogEntry.nameKey)
-        coreDataObject.setValue(time, forKey: LogEntry.timeKey)
-        coreDataObject.setValue(timezone.identifier, forKey: LogEntry.timezoneKey)
-        coreDataObject.setValue(productivityLevel.rawValue, forKey: LogEntry.productivityKey)
-        coreDataObject.setValue(notes, forKey: LogEntry.notesKey)
-        
-        TaichoContainer.container.persistenceController.saveContext()
-    }
-    
-    /**
-     Returns a copy of this object with the values provided.
-     */
-    func copy(name: String, time: Date, timezone: TimeZone, productivityLevel: ProductivityLevel, notes: String?) -> LogEntry? {
-        return LogEntry(
-            coreDataObject: coreDataObject,
-            name: name,
-            time: time,
-            timezone: timezone,
-            productivityLevel: productivityLevel,
-            notes: notes)
-    }
-    
-    /**
-     Updates the object's fields with the provided core data object.
-     */
-    private func load(_ coreDataObject: CoreDataObject) {
-        guard let name = coreDataObject.value(forKey: LogEntry.nameKey) as? String,
-              let time = coreDataObject.value(forKey: LogEntry.timeKey) as? Date,
-              let timezoneString = coreDataObject.value(forKey: LogEntry.timezoneKey) as? String,
-              let timezone = TimeZone(identifier: timezoneString),
-              let productivityString = coreDataObject.value(forKey: LogEntry.productivityKey) as? String,
-              let productivityLevel = ProductivityLevel(rawValue: productivityString) else {
-                  Log.assert("Failed to initalize with core data object!")
-                  return
-              }
-        
-        // Validate that optional fields do not have unexpected non-nil values.
-        let notesValue = coreDataObject.value(forKey: LogEntry.notesKey)
-        let notes = notesValue as? String
-        guard notes != nil || notesValue == nil else {
-            Log.assert("Invalid type found in field.")
-            return
-        }
-        
-        self.name = name
-        self.time = time
-        self.timezone = timezone
-        self.productivityLevel = productivityLevel
-        self.notes = notes
-    }
-    
-}
+    @NSManaged private var storedNotes: String?
 
-// MARK: - CoreData
-
-@objc(LogEntryCoreDataObject)
-fileprivate class CoreDataObject: NSManagedObject, CoreDataEntityObject {
-    
-    static var objectName: String {
-        return "LogEntryCoreDataObject"
+    var name: String {
+        get {
+            return (value(forKey: LogEntry.nameKey) as? String).assertIfNil() ?? ""
+        }
+        set {
+            setValue(newValue, forKey: LogEntry.nameKey)
+        }
     }
-    
-    // TODO: Need to send updates when fields are updated
-    @NSManaged var name: String
-    @NSManaged var time: Date
-    @NSManaged var timezone: String
-    @NSManaged var productivityLevel: String
-    @NSManaged var notes: String
-    
+    var time: Date {
+        get {
+            return (value(forKey: LogEntry.timeKey) as? Date).assertIfNil() ?? Date()
+        }
+        set {
+            setValue(newValue, forKey: LogEntry.timeKey)
+        }
+    }
+    var timezone: TimeZone {
+        get {
+            guard let timezone = TimeZone(identifier: LogEntry.timezoneKey) else {
+                Log.assert("Failed to serialize timezone.")
+                return TimeZone.current
+            }
+            return timezone
+        }
+        set {
+            setValue(newValue.identifier, forKey: LogEntry.timezoneKey)
+        }
+    }
+    var productivityLevel: ProductivityLevel {
+        get {
+            guard let productivityString = value(forKey: LogEntry.productivityKey) as? String,
+                  let productivityLevel = ProductivityLevel(rawValue: productivityString) else {
+                      Log.assert("Failed to serialize productivity level.")
+                      return .none
+                  }
+            return productivityLevel
+        }
+        set {
+            setValue(newValue.rawValue, forKey: LogEntry.productivityKey)
+        }
+    }
+    var notes: String? {
+        get {
+            return (value(forKey: LogEntry.notesKey) as? String) ?? ""
+        }
+        set {
+            setValue(newValue, forKey: LogEntry.notesKey)
+        }
+    }
+
     /**
      An entity description to be used by CoreData.
      */

@@ -39,6 +39,7 @@
 		65C8021028FE6101000B80C6 /* UIEdgeInsets+Taicho.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C8020F28FE6101000B80C6 /* UIEdgeInsets+Taicho.swift */; };
 		65C8021428FF8A70000B80C6 /* UITextView+Taicho.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C8021328FF8A70000B80C6 /* UITextView+Taicho.swift */; };
 		65C8021728FFA651000B80C6 /* LogEntryListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C8021628FFA651000B80C6 /* LogEntryListCellViewModel.swift */; };
+		65C802192901043B000B80C6 /* Optional+Taicho.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C802182901043B000B80C6 /* Optional+Taicho.swift */; };
 		EF4ECF8C5035D88A525AA704 /* Pods_TaichoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 544C8F65D41B77308B79595F /* Pods_TaichoUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -99,6 +100,7 @@
 		65C8020F28FE6101000B80C6 /* UIEdgeInsets+Taicho.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIEdgeInsets+Taicho.swift"; sourceTree = "<group>"; };
 		65C8021328FF8A70000B80C6 /* UITextView+Taicho.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Taicho.swift"; sourceTree = "<group>"; };
 		65C8021628FFA651000B80C6 /* LogEntryListCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogEntryListCellViewModel.swift; sourceTree = "<group>"; };
+		65C802182901043B000B80C6 /* Optional+Taicho.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Taicho.swift"; sourceTree = "<group>"; };
 		695F80B79ECAC5DA2777D011 /* Pods-TaichoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaichoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TaichoTests/Pods-TaichoTests.release.xcconfig"; sourceTree = "<group>"; };
 		7268CDCEE6F957892BFE3193 /* Pods-Taicho.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Taicho.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Taicho/Pods-Taicho.debug.xcconfig"; sourceTree = "<group>"; };
 		B00A2764B43A6B37D7B6068B /* Pods_Taicho.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Taicho.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -259,6 +261,7 @@
 				65C8020D28FE5C80000B80C6 /* CGSize+Taicho.swift */,
 				65C8020F28FE6101000B80C6 /* UIEdgeInsets+Taicho.swift */,
 				65C8021328FF8A70000B80C6 /* UITextView+Taicho.swift */,
+				65C802182901043B000B80C6 /* Optional+Taicho.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -542,6 +545,7 @@
 				65C801ED28FB43CB000B80C6 /* EntityField.swift in Sources */,
 				65C8020728FD0EE5000B80C6 /* LogActivityViewController.swift in Sources */,
 				65C801F328FC7E2C000B80C6 /* TaichoEntity.swift in Sources */,
+				65C802192901043B000B80C6 /* Optional+Taicho.swift in Sources */,
 				65C8020228FCFD2D000B80C6 /* UIConstants.swift in Sources */,
 				65C801AE28FA2102000B80C6 /* AppDelegate.swift in Sources */,
 				65C8020E28FE5C80000B80C6 /* CGSize+Taicho.swift in Sources */,

@@ -24,6 +24,11 @@ class LogEntryListViewController: UIViewController {
      */
     private var viewModelStream: AnyCancellable?
 
+    /**
+     The subscriber listening to updates for individual log entries.
+     */
+    private var viewModelReceiver: AnyCancellable?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,11 +44,15 @@ class LogEntryListViewController: UIViewController {
             tableView.widthAnchor.constraint(equalTo: view.widthAnchor),
             tableView.heightAnchor.constraint(equalTo: view.heightAnchor)
         ])
-        
+
         viewModelStream = $viewModels.receive(on: DispatchQueue.main).sink { [weak self] _ in
             self?.updateData()
         }
-        
+
+        viewModelReceiver = TaichoContainer.container.logEntryDataManager.publisher.sink { [weak self] logEntry in
+            self?.reloadCell(with: logEntry)
+        }
+
         //        TaichoContainer.container.logEntryDataManager.createNewLogStartingNow("Hello!", productivityLevel: .high, notes: nil)
         //        TaichoContainer.container.persistenceController.saveContext()
         updateData()
@@ -56,6 +65,16 @@ class LogEntryListViewController: UIViewController {
     
     private func updateData() {
         tableView.reloadData()
+    }
+
+    private func reloadCell(with logEntry: LogEntry) {
+        guard let viewModel = viewModels.first(where: { viewModel in
+            viewModel.logEntry.objectID == logEntry.objectID
+        }) else {
+            return
+        }
+        viewModel.logEntry = logEntry
+        updateData()
     }
     
     private func loadViewModels(with logEntries: [LogEntry]) {

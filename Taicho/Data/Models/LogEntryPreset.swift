@@ -11,68 +11,47 @@ import CoreData
 /**
  A user-defined preset that templatizes commonly repeated log entries.
  */
-class LogEntryPreset: NSObject, TaichoEntity {
-    
-    static var coreDataObjectType: CoreDataEntityObject.Type {
-        return CoreDataObject.self
-    }
+@objc(LogEntryPreset)
+class LogEntryPreset: NSManagedObject, TaichoEntity {
+
     fileprivate static let nameKey = "name"
     fileprivate static let productivityKey = "productivity"
-    
-    var coreDataObject: CoreDataEntityObject
-    
+
+    static var objectName: String {
+        return "LogEntryPreset"
+    }
+
     /**
      The name of the log entry. This is a human-readable string meant to identify the activity this log captures.
      */
-    let name: String
-    
+    @NSManaged private var storedName: String
     /**
      The productivity level of the entry.
      */
-    let productivityLevel: ProductivityLevel
-    
-    required init(coreDataObject: CoreDataEntityObject, name: String, productivityLevel: ProductivityLevel) {
-        self.coreDataObject = coreDataObject
-        self.name = name
-        self.productivityLevel = productivityLevel
-        super.init()
-    }
-    
-    convenience init?(_ managedObject: NSManagedObject) {
-        guard let coreDataObject = managedObject as? CoreDataObject else {
-            Log.assert("Incorrect core data object type passed in: \(managedObject)")
-            return nil
-        }
-        guard let name = coreDataObject.value(forKey: LogEntryPreset.nameKey) as? String,
-              let productivityString = coreDataObject.value(forKey: LogEntryPreset.productivityKey) as? String,
-              let productivityLevel = ProductivityLevel(rawValue: productivityString) else {
-            Log.assert("Failed to initialize with core data object!")
-            return nil
-        }
-        self.init(coreDataObject: coreDataObject, name: name, productivityLevel: productivityLevel)
-    }
-    
-    // MARK: - Methods
-    
-    func persistCoreData() {
-        coreDataObject.setValue(name, forKey: LogEntryPreset.nameKey)
-        coreDataObject.setValue(productivityLevel.rawValue, forKey: LogEntryPreset.productivityKey)
-    }
-    
-}
+    @NSManaged private var storedProductivityLevel: String
 
-// MARK: - CoreData
-
-@objc(LogEntryPresetCoreDataObject)
-fileprivate class CoreDataObject: NSManagedObject, CoreDataEntityObject {
-    
-    static var objectName: String {
-        return "LogEntryPresetCoreDataObject"
+    var name: String {
+        get {
+            return (value(forKey: LogEntryPreset.nameKey) as? String).assertIfNil() ?? ""
+        }
+        set {
+            setValue(newValue, forKey: LogEntryPreset.nameKey)
+        }
     }
-    
-    @NSManaged var name: String
-    @NSManaged var productivityLevel: String
-    
+    var productivityLevel: ProductivityLevel {
+        get {
+            guard let productivityString = value(forKey: LogEntryPreset.productivityKey) as? String,
+                  let productivityLevel = ProductivityLevel(rawValue: productivityString) else {
+                      Log.assert("Failed to serialize productivity level.")
+                      return .none
+                  }
+            return productivityLevel
+        }
+        set {
+            setValue(newValue.rawValue, forKey: LogEntryPreset.productivityKey)
+        }
+    }
+
     /**
      An entity description to be used by CoreData.
      */

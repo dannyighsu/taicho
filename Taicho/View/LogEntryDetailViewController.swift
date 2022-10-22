@@ -116,8 +116,7 @@ class LogEntryDetailViewController: UIViewController {
             present(UIUtils.getErrorAlert("Error! Field value invalid."), animated: true)
             return
         }
-        
-        logEntry.persistCoreData()
+
         TaichoContainer.container.persistenceController.saveContext()
         cancel()
     }

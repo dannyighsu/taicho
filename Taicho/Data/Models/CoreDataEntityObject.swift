@@ -13,13 +13,4 @@ import CoreData
  */
 protocol CoreDataEntityObject: NSManagedObject {
     
-    /**
-     The object's name. Will be used to key the object type uniquely.
-     */
-    static var objectName: String { get }
-    /**
-     An entity description for this object type
-     */
-    static var entityDescription: NSEntityDescription { get }
-    
 }

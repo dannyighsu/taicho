@@ -36,7 +36,7 @@ class PersistenceController {
         let model = NSManagedObjectModel()
         
         // Grab the entity descriptions of all objects that need to be registered.
-        model.entities = [LogEntry.coreDataObjectType, LogEntryPreset.coreDataObjectType].map { $0.entityDescription }
+        model.entities = ([LogEntry.self, LogEntryPreset.self] as [TaichoEntity.Type]).map { $0.entityDescription }
         return model
     }()
     
