@@ -16,5 +16,7 @@ struct UIConstants {
     static let verticalMargin: CGFloat = 64
     static let interItemSpacing: CGFloat = 4
     static let interSectionSpacing: CGFloat = 8
+    static let plusButtonEmoji = "➕"
+    static let notesEmoji = "📝"
     
 }

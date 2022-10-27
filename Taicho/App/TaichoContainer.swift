@@ -19,6 +19,6 @@ class TaichoContainer {
     
     lazy var logEntryDataManager = LogEntryDataManager()
     
-    lazy var logEntryPresetDataManager = LogEntryDataManager()
+    lazy var logEntryPresetDataManager = LogEntryPresetDataManager()
     
 }

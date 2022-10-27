@@ -61,14 +61,14 @@ final class LogEntryDataManager: NSObject {
     /**
      Returns a log entry created with the given preset's default values.
      */
-    func createLogEntry(with preset: LogEntryPreset) -> LogEntry? {
+    func create(with preset: LogEntryPreset) -> LogEntry? {
         return createNewLogStartingNow(preset.name, productivityLevel: preset.productivityLevel)
     }
     
     /**
      Gets log entries for the given page size and offset.
      */
-    func getAllLogEntries() -> [LogEntry] {
+    func getAll() -> [LogEntry] {
         let result = TaichoContainer.container.persistenceController.getAllObjects(LogEntry.objectName)
         return result.compactMap { ($0 as? LogEntry).assertIfNil() }
     }

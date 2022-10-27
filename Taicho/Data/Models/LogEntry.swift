@@ -12,7 +12,9 @@ import Combine
 /**
  A semantic measurement of the productivity of the activity.
  */
-enum ProductivityLevel: String {
+enum ProductivityLevel: String, CaseIterable {
+
+    static let defaultProductivity: ProductivityLevel = .high
     
     private static let highProductivityDisplayString = "High"
     private static let medProductivityDisplayString = "Medium"

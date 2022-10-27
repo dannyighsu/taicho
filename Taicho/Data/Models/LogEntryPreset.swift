@@ -14,8 +14,10 @@ import CoreData
 @objc(LogEntryPreset)
 class LogEntryPreset: NSManagedObject, TaichoEntity {
 
-    fileprivate static let nameKey = "name"
-    fileprivate static let productivityKey = "productivity"
+    private static let nameKey = "name"
+    private static let productivityKey = "productivity"
+    private static let iconKey = "icon"
+
 
     static var objectName: String {
         return "LogEntryPreset"
@@ -29,6 +31,10 @@ class LogEntryPreset: NSManagedObject, TaichoEntity {
      The productivity level of the entry.
      */
     @NSManaged private var storedProductivityLevel: String
+    /**
+     The graphical representation of the entry.
+     */
+    @NSManaged private var storedIcon: String
 
     var name: String {
         get {
@@ -49,6 +55,14 @@ class LogEntryPreset: NSManagedObject, TaichoEntity {
         }
         set {
             setValue(newValue.rawValue, forKey: LogEntryPreset.productivityKey)
+        }
+    }
+    var icon: String {
+        get {
+            return (value(forKey: LogEntryPreset.iconKey) as? String).assertIfNil() ?? ""
+        }
+        set {
+            setValue(newValue, forKey: LogEntryPreset.iconKey)
         }
     }
 

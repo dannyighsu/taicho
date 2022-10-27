@@ -60,7 +60,7 @@ class LogEntryListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        loadViewModels(with: TaichoContainer.container.logEntryDataManager.getAllLogEntries())
+        loadViewModels(with: TaichoContainer.container.logEntryDataManager.getAll())
     }
     
     private func updateData() {

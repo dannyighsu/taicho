@@ -52,5 +52,16 @@ class UIUtils {
         
         return ceil(boundingBox.width)
     }
+
+    static func image(fromText text: String, size: CGSize) -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(size, false, 0)
+        UIColor.white.set()
+        let rect = CGRect(origin: .zero, size: size)
+        UIRectFill(CGRect(origin: .zero, size: size))
+        text.draw(in: rect, withAttributes: [.font: UIFont.systemFont(ofSize: 72)])
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
+    }
     
 }
