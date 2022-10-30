@@ -12,38 +12,17 @@ import Combine
 /**
  The data manager for LogEntry objects.
  */
-final class LogEntryDataManager: NSObject {
-
-    /**
-     Publishes updates to any changed log entries. Consumers can listen to this
-     to receive all log entry object updates.
-     */
-    var publisher: AnyPublisher<LogEntry, Never> {
-        return logEntrySubject.eraseToAnyPublisher()
-    }
-    private let logEntrySubject = PassthroughSubject<LogEntry, Never>()
-
-    override required init() {
-        super.init()
-
-        NotificationCenter.default.addObserver(
-            forName: NSManagedObjectContext.didChangeObjectsNotification,
-            object: nil,
-            queue: OperationQueue.main) { notification in
-                guard let updatedObjects = notification.userInfo?[NSUpdatedObjectsKey] as? Set<LogEntry> else {
-                    return
-                }
-
-                updatedObjects.forEach {
-                    self.logEntrySubject.send($0)
-                }
-            }
-    }
+final class LogEntryDataManager: TaichoEntityDataManager<LogEntry> {
     
     /**
-     Returns a new log entry for an activity that is starting now.
+     Returns a new log entry for an activity. By default this will be a log entry
+     that is starting now, in the current timezone.
      */
-    func createNewLogStartingNow(_ name: String, productivityLevel: ProductivityLevel, notes: String? = nil) -> LogEntry? {
+    func create(_ name: String,
+                productivityLevel: ProductivityLevel,
+                date: Date = Date(),
+                timezone: TimeZone = TimeZone.current,
+                notes: String? = nil) -> LogEntry? {
         let coreDataObject = TaichoContainer.container.persistenceController.createNewObject(objectName: LogEntry.objectName)
         guard let typedObject = coreDataObject as? LogEntry else {
             Log.assert("Object of incorrect type was created: " + String(describing: coreDataObject))
@@ -51,8 +30,8 @@ final class LogEntryDataManager: NSObject {
         }
         typedObject.name = name
         typedObject.productivityLevel = productivityLevel
-        typedObject.time = Date()
-        typedObject.timezone = TimeZone.current
+        typedObject.time = date
+        typedObject.timezone = timezone
         typedObject.notes = notes
 
         return typedObject
@@ -62,7 +41,7 @@ final class LogEntryDataManager: NSObject {
      Returns a log entry created with the given preset's default values.
      */
     func create(with preset: LogEntryPreset) -> LogEntry? {
-        return createNewLogStartingNow(preset.name, productivityLevel: preset.productivityLevel)
+        return create(preset.name, productivityLevel: preset.productivityLevel)
     }
     
     /**

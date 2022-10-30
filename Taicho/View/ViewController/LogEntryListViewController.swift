@@ -12,28 +12,40 @@ import Combine
  The base ViewController for viewing, filteirng, and editing log entries. Log entries will have display options.
  */
 class LogEntryListViewController: UIViewController {
+
+    // MARK: - Constants
+
+    private static let title = "Log History"
     
     // MARK: - Properties
     
     private let tableView = UITableView()
     
-    @Published private var viewModels: [LogEntryListCellViewModel] = []
+    private var viewModels: [LogEntryListCellViewModel] = []
+
     /**
-     The reactive stream for the viewModels array. Will cause an update
-     to the table view with the array membership is updated.
+     The subscriber for log entry insertions. Will cause an update
+     to the table view when log entries are added.
      */
-    private var viewModelStream: AnyCancellable?
+    private var logEntriesInsertedReceiver: AnyCancellable?
+
+    /**
+     The subscriber for log entry removals. Will cause an update to the table view
+     when log entries are removed, if necessary.
+     */
+    private var logEntriesDeletedReceiver: AnyCancellable?
 
     /**
      The subscriber listening to updates for individual log entries.
      */
-    private var viewModelReceiver: AnyCancellable?
+    private var logEntryObjectsReceiver: AnyCancellable?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        navigationItem.title = LogEntryListViewController.title
         
         view.addSubview(tableView)
-        tableView.backgroundColor = .lightGray
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
         tableView.dataSource = self
@@ -45,16 +57,28 @@ class LogEntryListViewController: UIViewController {
             tableView.heightAnchor.constraint(equalTo: view.heightAnchor)
         ])
 
-        viewModelStream = $viewModels.receive(on: DispatchQueue.main).sink { [weak self] _ in
+        logEntriesInsertedReceiver = TaichoContainer.container.logEntryDataManager.objectInsertedPublisher.sink(receiveValue: { [weak self] logEntries in
+            logEntries.forEach {
+                self?.viewModels.append(LogEntryListCellViewModel($0))
+            }
             self?.updateData()
-        }
+        })
+        logEntriesDeletedReceiver = TaichoContainer.container.logEntryDataManager.objectDeletedPublisher.sink(receiveValue: { [weak self] logEntries in
+            self?.viewModels.removeAll(where: { viewModel in
+                logEntries.contains { $0.objectID == viewModel.logEntry.objectID }
+            })
+            self?.updateData()
+        })
 
-        viewModelReceiver = TaichoContainer.container.logEntryDataManager.publisher.sink { [weak self] logEntry in
-            self?.reloadCell(with: logEntry)
-        }
+        logEntryObjectsReceiver = TaichoContainer.container.logEntryDataManager.objectUpdatePublisher.sink(receiveValue: { [weak self] logEntries in
+            self?.viewModels.forEach({ viewModel in
+                if logEntries.contains(where: { $0.objectID == viewModel.logEntry.objectID }) {
+                    viewModel.reload()
+                }
+            })
+            self?.updateData()
+        })
 
-        //        TaichoContainer.container.logEntryDataManager.createNewLogStartingNow("Hello!", productivityLevel: .high, notes: nil)
-        //        TaichoContainer.container.persistenceController.saveContext()
         updateData()
     }
     
@@ -66,22 +90,9 @@ class LogEntryListViewController: UIViewController {
     private func updateData() {
         tableView.reloadData()
     }
-
-    private func reloadCell(with logEntry: LogEntry) {
-        guard let viewModel = viewModels.first(where: { viewModel in
-            viewModel.logEntry.objectID == logEntry.objectID
-        }) else {
-            return
-        }
-        viewModel.logEntry = logEntry
-        updateData()
-    }
     
     private func loadViewModels(with logEntries: [LogEntry]) {
         viewModels = logEntries.map { LogEntryListCellViewModel($0) }
-        viewModels.forEach { viewModel in
-            viewModel.delegate = self
-        }
     }
 
 }
@@ -126,16 +137,6 @@ extension LogEntryListViewController: UITableViewDelegate, UITableViewDataSource
             rootViewController: LogEntryDetailViewController(logEntry: viewModel.logEntry))
         present(navigationController, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
-}
-
-// MARK: - LogEntryListCellViewModelDelegate
-
-extension LogEntryListViewController: LogEntryListCellViewModelDelegate {
-    
-    func logEntryDidUpdate(_ logEntry: LogEntry) {
-        updateData()
     }
     
 }

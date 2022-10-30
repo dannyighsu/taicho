@@ -39,7 +39,7 @@ enum ProductivityLevel: String, CaseIterable {
         }
     }
     
-    static func value(from displayString: String) -> Self {
+    static func value(from displayString: String) -> Self? {
         switch displayString {
         case highProductivityDisplayString:
             return .high
@@ -48,10 +48,9 @@ enum ProductivityLevel: String, CaseIterable {
         case lowProductivityDisplayString:
             return .low
         case noProductivityDisplayString:
-            return .none
+            return ProductivityLevel.none
         default:
-            Log.assert("Failed to initialize from display string: \(displayString)")
-            return .none
+            return nil
         }
     }
     
@@ -69,11 +68,11 @@ class LogEntry: NSManagedObject, TaichoEntity {
         return "LogEntry"
     }
 
-    fileprivate static let nameKey = "name"
-    fileprivate static let timeKey = "time"
-    fileprivate static let timezoneKey = "timezone"
-    fileprivate static let productivityKey = "productivity"
-    fileprivate static let notesKey = "notes"
+    fileprivate static let nameKey = "storedName"
+    fileprivate static let timeKey = "storedTime"
+    fileprivate static let timezoneKey = "storedTimezone"
+    fileprivate static let productivityKey = "storedProductivityLevel"
+    fileprivate static let notesKey = "storedNotes"
 
     // MARK: - Properties
 

@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import EmojiPicker
 
 /**
  Displays the full details of a single log entry preset. Allows for editing and saving the preset.
@@ -16,7 +17,10 @@ class LogEntryPresetDetailViewController: UIViewController {
     // MARK: - Properties
 
     private let logEntryPreset: LogEntryPreset?
-
+    private lazy var selectedIcon = logEntryPreset?.icon ?? UIConstants.notesEmoji
+    private var allPropertyViews: [LogEntryDetailPropertyView] {
+        return [namePropertyView, productivityPropertyView, iconPropertyView]
+    }
     private lazy var namePropertyView = LogEntryDetailPropertyView(
         delegate: self,
         labelTitle: "Name",
@@ -28,11 +32,7 @@ class LogEntryPresetDetailViewController: UIViewController {
     private lazy var iconPropertyView = LogEntryDetailPropertyView(
         delegate: self,
         labelTitle: "Icon",
-        textPrefill: logEntryPreset?.icon ?? UIConstants.notesEmoji)
-    private var allPropertyViews: [LogEntryDetailPropertyView] {
-        return [namePropertyView, productivityPropertyView, iconPropertyView]
-    }
-
+        image: UIUtils.emojiImage(fromText: selectedIcon))
     private let productivityPicker = ProductivityPickerView()
 
     // These are defaulted to 1000 just to ignore the annoying constraint break warning. In reality they're dynamically sized.
@@ -108,49 +108,35 @@ class LogEntryPresetDetailViewController: UIViewController {
     @objc func save() {
         allPropertyViews.forEach { $0.resignFirstResponder() }
 
-        if !validateFields() {
-            present(UIUtils.getErrorAlert("Error! Field value invalid."), animated: true)
-            return
-        }
-
-        guard let name = namePropertyView.propertyTextView.text else {
+        guard let name = namePropertyView.propertyTextView.text, name.count > 0 else {
             present(UIUtils.getErrorAlert("Error! Log must have a name."), animated: true)
             return
         }
 
-        guard let productivityString = productivityPropertyView.propertyTextView.text else {
-            Log.assert("Failed to get productivity string")
-            return
-        }
-
-        guard let icon = iconPropertyView.propertyTextView.text else {
-            Log.assert("Failed to get an icon")
+        guard let productivityString = productivityPropertyView.propertyTextView.text,
+              let productivityLevel = ProductivityLevel.value(from: productivityString) else {
+                  present(UIUtils.getErrorAlert("Error! Must specify a productivity level."), animated: true)
             return
         }
 
         if let logEntryPreset = logEntryPreset {
             logEntryPreset.name = name
-            logEntryPreset.productivityLevel = ProductivityLevel.value(from: productivityString)
-            logEntryPreset.icon = icon
+            logEntryPreset.productivityLevel = productivityLevel
+            logEntryPreset.icon = selectedIcon
         } else {
             let _ = TaichoContainer.container.logEntryPresetDataManager.create(
                 name: name,
-                productivity: ProductivityLevel.value(from: productivityString),
-                icon: icon)
+                productivity: productivityLevel,
+                icon: selectedIcon)
         }
 
         TaichoContainer.container.persistenceController.saveContext()
         cancel()
     }
 
-    private func validateFields() -> Bool {
-        // TODO
-        return true
-    }
-
     private func configureNavigationItem() {
         navigationController.assertIfNil()?.navigationBar.backgroundColor = .white
-        navigationItem.title = "Edit Log"
+        navigationItem.title = "Create New Preset"
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .cancel,
             target: self,
@@ -168,12 +154,52 @@ class LogEntryPresetDetailViewController: UIViewController {
 
 extension LogEntryPresetDetailViewController: LogEntryDetailPropertyViewDelegate {
 
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        guard textView == productivityPropertyView.propertyTextView else {
+            return
+        }
+
+        let selectedProductivity = ProductivityLevel.value(from: productivityPropertyView.propertyTextView.text) ?? .high
+
+        guard let indexOfSelectedProductivity = ProductivityLevel.allCases.firstIndex(of: selectedProductivity) else {
+            Log.assert("Failed to get index of productivity level.")
+            return
+        }
+
+        productivityPicker.selectRow(
+            indexOfSelectedProductivity,
+            inComponent: 0,
+            animated: false)
+        productivityPicker.pickerView(productivityPicker, didSelectRow: indexOfSelectedProductivity, inComponent: 0)
+    }
+
+    func imageTapped() {
+        showEmojiPicker()
+    }
+
+    private func showEmojiPicker() {
+        let emojiPickerVC = EmojiPicker.viewController
+        emojiPickerVC.sourceRect = view.frame
+        emojiPickerVC.delegate = self
+        present(emojiPickerVC, animated: true)
+        
+    }
+
 }
 
 extension LogEntryPresetDetailViewController: ProductivityPickerViewDelegate {
 
     func pickerView(_ pickerView: ProductivityPickerView, didSelectProductivity productivity: ProductivityLevel) {
         productivityPropertyView.propertyTextView.text = productivity.displayName
+    }
+
+}
+
+extension LogEntryPresetDetailViewController: EmojiPickerViewControllerDelegate {
+
+    func emojiPickerViewController(_ controller: EmojiPickerViewController, didSelect emoji: String) {
+        selectedIcon = emoji
+        iconPropertyView.iconImage = UIUtils.emojiImage(fromText: emoji)
     }
 
 }

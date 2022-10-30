@@ -14,9 +14,9 @@ import CoreData
 @objc(LogEntryPreset)
 class LogEntryPreset: NSManagedObject, TaichoEntity {
 
-    private static let nameKey = "name"
-    private static let productivityKey = "productivity"
-    private static let iconKey = "icon"
+    private static let nameKey = "storedName"
+    private static let productivityKey = "storedProductivity"
+    private static let iconKey = "storedIcon"
 
 
     static var objectName: String {
@@ -73,8 +73,13 @@ class LogEntryPreset: NSManagedObject, TaichoEntity {
         let entity = NSEntityDescription()
         let nameAttribute = EntityField(name: LogEntryPreset.nameKey, type: String.self, isUnique: true)
         let productivityAttribute = EntityField(name: LogEntryPreset.productivityKey, type: String.self)
+        let iconAttribute = EntityField(name: LogEntryPreset.iconKey, type: String.self)
 
-        entity.properties = [nameAttribute.propertyDescription, productivityAttribute.propertyDescription]
+        entity.properties = [
+            nameAttribute.propertyDescription,
+            productivityAttribute.propertyDescription,
+            iconAttribute.propertyDescription
+        ]
         entity.name = objectName
         entity.managedObjectClassName = objectName
         return entity

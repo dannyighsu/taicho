@@ -18,5 +18,7 @@ struct UIConstants {
     static let interSectionSpacing: CGFloat = 8
     static let plusButtonEmoji = "➕"
     static let notesEmoji = "📝"
+    static let iconViewDimension: CGFloat = 72
+    static let iconImageSize: CGSize = CGSize(width: iconViewDimension, height: iconViewDimension)
     
 }

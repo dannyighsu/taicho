@@ -12,9 +12,13 @@ class UIUtils {
     
     static func getErrorAlert(_ errorMessage: String) -> UIAlertController {
         let alertController = UIAlertController(title: "Argh Matey! A problem!", message: errorMessage, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { _ in
-            alertController.dismiss(animated: true, completion: nil)
-        }))
+        alertController.addAction(getDismissAction(alertController))
+        return alertController
+    }
+
+    static func getAlertBottomSheet(title: String, message: String? = nil) -> UIAlertController {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+        alertController.addAction(getDismissAction(alertController))
         return alertController
     }
     
@@ -53,15 +57,23 @@ class UIUtils {
         return ceil(boundingBox.width)
     }
 
-    static func image(fromText text: String, size: CGSize) -> UIImage? {
+    static func emojiImage(fromText text: String, size: CGSize = UIConstants.iconImageSize) -> UIImage? {
         UIGraphicsBeginImageContextWithOptions(size, false, 0)
         UIColor.white.set()
         let rect = CGRect(origin: .zero, size: size)
         UIRectFill(CGRect(origin: .zero, size: size))
-        text.draw(in: rect, withAttributes: [.font: UIFont.systemFont(ofSize: 72)])
+        text.draw(in: rect, withAttributes: [.font: UIFont.systemFont(ofSize: UIConstants.iconViewDimension - 4)])
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return image
+    }
+
+    // MARK: - Helpers
+
+    private static func getDismissAction(_ alertController: UIAlertController) -> UIAlertAction {
+        return UIAlertAction(title: "Cancel", style: .default, handler: { [weak alertController] _ in
+            alertController?.dismiss(animated: true, completion: nil)
+        })
     }
     
 }

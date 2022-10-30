@@ -8,20 +8,9 @@
 import Foundation
 import Combine
 
-protocol LogEntryListCellViewModelDelegate: AnyObject {
-    
-    func logEntryDidUpdate(_ logEntry: LogEntry)
-    
-}
-
 class LogEntryListCellViewModel: NSObject {
     
-    var logEntry: LogEntry {
-        didSet {
-            logEntrySubject.send(logEntry)
-        }
-    }
-    weak var delegate: LogEntryListCellViewModelDelegate?
+    let logEntry: LogEntry
     /**
      Publishes updates to the `LogEntry`.
      */
@@ -34,6 +23,10 @@ class LogEntryListCellViewModel: NSObject {
     init(_ logEntry: LogEntry) {
         self.logEntry = logEntry
         super.init()
+    }
+
+    func reload() {
+        logEntrySubject.send(logEntry)
     }
     
 }

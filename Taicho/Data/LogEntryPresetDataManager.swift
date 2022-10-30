@@ -6,11 +6,12 @@
 //
 
 import Foundation
+import CoreData
 
 /**
  The data manager for LogEntryPreset objects.
  */
-class LogEntryPresetDataManager {
+class LogEntryPresetDataManager: TaichoEntityDataManager<LogEntryPreset> {
 
     /**
      Returns a log entry preset created with the given values.
@@ -34,6 +35,20 @@ class LogEntryPresetDataManager {
     func getAll() -> [LogEntryPreset] {
         let result = TaichoContainer.container.persistenceController.getAllObjects(LogEntryPreset.objectName)
         return result.compactMap { ($0 as? LogEntryPreset).assertIfNil() }
+    }
+
+    /**
+     Deletes the given preset.
+     */
+    func delete(_ logEntryPreset: LogEntryPreset) {
+        delete([logEntryPreset])
+    }
+
+    /**
+     Deletes the given presets.
+     */
+    func delete(_ logEntryPresets: [LogEntryPreset]) {
+        TaichoContainer.container.persistenceController.delete(logEntryPresets)
     }
     
 }

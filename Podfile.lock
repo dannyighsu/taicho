@@ -1,26 +1,16 @@
 PODS:
-  - RxCocoa (6.5.0):
-    - RxRelay (= 6.5.0)
-    - RxSwift (= 6.5.0)
-  - RxRelay (6.5.0):
-    - RxSwift (= 6.5.0)
-  - RxSwift (6.5.0)
+  - EmojiPicker (1.1)
 
 DEPENDENCIES:
-  - RxCocoa (= 6.5.0)
-  - RxSwift (= 6.5.0)
+  - EmojiPicker
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
-    - RxCocoa
-    - RxRelay
-    - RxSwift
+    - EmojiPicker
 
 SPEC CHECKSUMS:
-  RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
-  RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
-  RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
+  EmojiPicker: 7d9cb698a2983501c0fa800e759dd7744638a0b9
 
-PODFILE CHECKSUM: 94f644cebc131f1f93daae09eb77f742aef50285
+PODFILE CHECKSUM: 03251c50f2c5cf7938a8cf9d6ca7a712d02b14f4
 
 COCOAPODS: 1.5.0

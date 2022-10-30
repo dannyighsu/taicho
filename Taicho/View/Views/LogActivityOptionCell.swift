@@ -14,18 +14,17 @@ import UIKit
 class LogActivityOptionCell: UICollectionViewCell {
 
     static var sizeRequired: CGSize {
-        let height = iconViewDimension
+        let height = UIConstants.iconViewDimension
         + UIUtils.height(for: "S", font: nameFont)
         + UIConstants.interItemSpacing
         + (2 * UIConstants.interSectionSpacing)
-        let width = iconViewDimension + (2 * UIConstants.interSectionSpacing)
+        let width = UIConstants.iconViewDimension + (2 * UIConstants.interSectionSpacing)
         return CGSize(width: width, height: height)
     }
     static var reuseIdentifier: String {
         return String(describing: self)
     }
 
-    private static let iconViewDimension: CGFloat = 88
     private static let nameFont = UIFont.systemFont(ofSize: 16, weight: .medium)
 
     private let activityNameLabel = UILabel()
@@ -33,7 +32,6 @@ class LogActivityOptionCell: UICollectionViewCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .green
 
         [activityNameLabel, activityIconView].forEach {
             addSubview($0)
@@ -49,8 +47,8 @@ class LogActivityOptionCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             activityIconView.centerXAnchor.constraint(equalTo: centerXAnchor),
             activityIconView.topAnchor.constraint(equalTo: topAnchor, constant: UIConstants.interSectionSpacing),
-            activityIconView.widthAnchor.constraint(equalToConstant: LogActivityOptionCell.iconViewDimension),
-            activityIconView.heightAnchor.constraint(equalToConstant: LogActivityOptionCell.iconViewDimension),
+            activityIconView.widthAnchor.constraint(equalToConstant: UIConstants.iconViewDimension),
+            activityIconView.heightAnchor.constraint(equalToConstant: UIConstants.iconViewDimension),
             activityNameLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             activityNameLabel.topAnchor.constraint(equalTo: activityIconView.bottomAnchor, constant: UIConstants.interItemSpacing),
             activityNameLabel.widthAnchor.constraint(lessThanOrEqualTo: widthAnchor, constant: -2 * UIConstants.interSectionSpacing)
@@ -63,9 +61,10 @@ class LogActivityOptionCell: UICollectionViewCell {
 
     func load(_ viewModel: LogActivityOptionViewModel) {
         activityNameLabel.text = viewModel.name
-        activityIconView.image = UIUtils.image(fromText: viewModel.icon, size: CGSize(
-            width: LogActivityOptionCell.iconViewDimension,
-            height: LogActivityOptionCell.iconViewDimension))
+        // For whatever reason the icon looks a bit cut off without the extra 8 height padding here.
+        activityIconView.image = UIUtils.emojiImage(fromText: viewModel.icon, size: CGSize(
+            width: UIConstants.iconViewDimension,
+            height: UIConstants.iconViewDimension + 8))
     }
 
 }

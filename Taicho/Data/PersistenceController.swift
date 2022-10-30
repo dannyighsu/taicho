@@ -96,5 +96,14 @@ class PersistenceController {
             return []
         }
     }
+
+    /**
+     Deletes all objects given.
+     */
+    func delete(_ objects: [NSManagedObject]) {
+        objects.forEach {
+            persistentContainer.viewContext.delete($0)
+        }
+    }
     
 }

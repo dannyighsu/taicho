@@ -15,24 +15,24 @@ class LogEntryDetailViewController: UIViewController {
     
     // MARK: - Properties
     
-    private let logEntry: LogEntry
+    private let logEntry: LogEntry?
     
     private lazy var namePropertyView = LogEntryDetailPropertyView(
         delegate: self,
         labelTitle: "Name",
-        textPrefill: logEntry.name)
+        textPrefill: logEntry?.name)
     private lazy var timePropertyView = LogEntryDetailPropertyView(
         delegate: self,
         labelTitle: "Time",
-        textPrefill: DateUtils.getDisplayFormat(logEntry.time))
+        textPrefill: DateUtils.getDisplayFormat(logEntry?.time ?? Date()))
     private lazy var productivityPropertyView = LogEntryDetailPropertyView(
         delegate: self,
         labelTitle: "Productivity Level",
-        textPrefill: logEntry.productivityLevel.displayName)
+        textPrefill: logEntry?.productivityLevel.displayName)
     private lazy var notesPropertyView = LogEntryDetailPropertyView(
         delegate: self,
         labelTitle: "Notes",
-        textPrefill: logEntry.notes)
+        textPrefill: logEntry?.notes)
     private var allPropertyViews: [LogEntryDetailPropertyView] {
         return [namePropertyView, timePropertyView, productivityPropertyView, notesPropertyView]
     }
@@ -47,7 +47,7 @@ class LogEntryDetailViewController: UIViewController {
     
     // MARK: - Initialization
     
-    init(logEntry: LogEntry) {
+    init(logEntry: LogEntry? = nil) {
         self.logEntry = logEntry
         super.init(nibName: nil, bundle: nil)
     }
@@ -116,19 +116,38 @@ class LogEntryDetailViewController: UIViewController {
     
     @objc func save() {
         allPropertyViews.forEach { $0.resignFirstResponder() }
-        
-        if !validateFields() {
-            present(UIUtils.getErrorAlert("Error! Field value invalid."), animated: true)
+
+        guard let name = namePropertyView.propertyTextView.text else {
+            present(UIUtils.getErrorAlert("Error! Log must have a name."), animated: true)
             return
+        }
+        guard let timeString = timePropertyView.propertyTextView.text,
+              let dateTime = DateUtils.getDate(from: timeString) else {
+                  present(UIUtils.getErrorAlert("Error! Time is invalid."), animated: true)
+                  return
+              }
+        guard let productivityString = productivityPropertyView.propertyTextView.text,
+        let productivityLevel = ProductivityLevel.value(from: productivityString) else {
+            present(UIUtils.getErrorAlert("Error! Productivity level is invalid."), animated: true)
+            return
+        }
+        let notes = notesPropertyView.propertyTextView.text
+
+        if let logEntry = logEntry {
+            logEntry.name = name
+            logEntry.productivityLevel = productivityLevel
+            logEntry.time = dateTime
+            logEntry.notes = notes
+        } else {
+            let _ = TaichoContainer.container.logEntryDataManager.create(
+                name,
+                productivityLevel: productivityLevel,
+                date: dateTime,
+                notes: notes)
         }
 
         TaichoContainer.container.persistenceController.saveContext()
         cancel()
-    }
-    
-    private func validateFields() -> Bool {
-        // TODO
-        return true
     }
     
     private func configureNavigationItem() {
@@ -150,31 +169,24 @@ class LogEntryDetailViewController: UIViewController {
 }
 
 extension LogEntryDetailViewController: LogEntryDetailPropertyViewDelegate {
-    
-    func textViewDidEndEditing(_ textView: UITextView) {
-        switch textView {
-        case namePropertyView.propertyTextView:
-            guard let name = namePropertyView.propertyTextView.text else {
-                present(UIUtils.getErrorAlert("Error! Log must have a name."), animated: true)
-                return
-            }
-            logEntry.name = name
-        case timePropertyView.propertyTextView:
-            guard let timeString = timePropertyView.propertyTextView.text,
-                  let dateTime = DateUtils.getDate(from: timeString) else {
-                      Log.assert("Error setting new time")
-                      return
-                  }
-            
-            logEntry.time = dateTime
-        case productivityPropertyView.propertyTextView:
-            Log.error("Productivity manually modified. Ignoring.")
-        case notesPropertyView.propertyTextView:
-            logEntry.notes = notesPropertyView.propertyTextView.text
-        default:
-            Log.assert("Unknown textview found.")
+
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        guard textView == productivityPropertyView.propertyTextView else {
             return
         }
+
+        let selectedProductivity = ProductivityLevel.value(from: productivityPropertyView.propertyTextView.text) ?? .high
+
+        guard let indexOfSelectedProductivity = ProductivityLevel.allCases.firstIndex(of: selectedProductivity) else {
+            Log.assert("Failed to get index of productivity level.")
+            return
+        }
+
+        productivityPicker.selectRow(
+            indexOfSelectedProductivity,
+            inComponent: 0,
+            animated: false)
+        productivityPicker.pickerView(productivityPicker, didSelectRow: indexOfSelectedProductivity, inComponent: 0)
     }
     
 }
@@ -183,7 +195,6 @@ extension LogEntryDetailViewController: ProductivityPickerViewDelegate {
 
     func pickerView(_ pickerView: ProductivityPickerView, didSelectProductivity productivity: ProductivityLevel) {
         productivityPropertyView.propertyTextView.text = productivity.displayName
-        logEntry.productivityLevel = productivity
     }
 
 }
