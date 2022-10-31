@@ -40,7 +40,7 @@ class LogEntryDetailPropertyView: UIView {
     private weak var delegate: LogEntryDetailPropertyViewDelegate?
     
     private let propertyLabel = UILabel()
-    private let button = UIButton()
+    let button = UIButton()
     let propertyTextView = UITextView()
     var iconImage: UIImage? {
         didSet {
@@ -85,7 +85,7 @@ class LogEntryDetailPropertyView: UIView {
 
         // Configure text input views
         propertyTextView.font = UIFont.systemFont(ofSize: 16)
-        propertyTextView.backgroundColor = .secondarySystemBackground.withAlphaComponent(0.5)
+//        propertyTextView.backgroundColor = .secondarySystemBackground.withAlphaComponent(0.5)
         propertyTextView.layer.cornerRadius = 2.0
         propertyTextView.layer.borderColor = UIColor.separator.cgColor
         propertyTextView.layer.borderWidth = 1.0

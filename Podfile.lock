@@ -1,16 +1,3 @@
-PODS:
-  - EmojiPicker (1.1)
-
-DEPENDENCIES:
-  - EmojiPicker
-
-SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
-    - EmojiPicker
-
-SPEC CHECKSUMS:
-  EmojiPicker: 7d9cb698a2983501c0fa800e759dd7744638a0b9
-
-PODFILE CHECKSUM: 03251c50f2c5cf7938a8cf9d6ca7a712d02b14f4
+PODFILE CHECKSUM: 03a727f5dc2c6440d79262d063c1ec80e2bad56a
 
 COCOAPODS: 1.5.0

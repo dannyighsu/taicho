@@ -12,10 +12,18 @@ import UIKit
  Displays the full details of a single log entry. Allows for editing and saving the log entry.
  */
 class LogEntryDetailViewController: UIViewController {
+
+    // MARK: - Context
+
+    enum Context {
+        case edit
+        case new
+    }
     
     // MARK: - Properties
     
     private let logEntry: LogEntry?
+    private let context: LogEntryDetailViewController.Context
     
     private lazy var namePropertyView = LogEntryDetailPropertyView(
         delegate: self,
@@ -47,9 +55,14 @@ class LogEntryDetailViewController: UIViewController {
     
     // MARK: - Initialization
     
-    init(logEntry: LogEntry? = nil) {
+    init(logEntry: LogEntry? = nil, logEntryPreset: LogEntryPreset? = nil, context: Context = .new) {
         self.logEntry = logEntry
+        self.context = context
         super.init(nibName: nil, bundle: nil)
+
+        if let logEntryPreset = logEntryPreset {
+            loadPreset(logEntryPreset)
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -149,10 +162,15 @@ class LogEntryDetailViewController: UIViewController {
         TaichoContainer.container.persistenceController.saveContext()
         cancel()
     }
+
+    private func loadPreset(_ preset: LogEntryPreset) {
+        namePropertyView.propertyTextView.text = preset.name
+        productivityPropertyView.propertyTextView.text = preset.productivityLevel.displayName
+    }
     
     private func configureNavigationItem() {
         navigationController?.navigationBar.backgroundColor = .white
-        navigationItem.title = "Edit Log"
+        navigationItem.title = context == .edit ? "Edit Log" : "New Log"
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .cancel,
             target: self,

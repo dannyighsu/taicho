@@ -45,6 +45,7 @@ class LogActivityViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        modalPresentationStyle = .overFullScreen
 
         activityOptionCollectionView.delegate = self
         activityOptionCollectionView.dataSource = self
@@ -121,7 +122,7 @@ class LogActivityViewController: UIViewController {
 
     @objc
     private func addNewPreset() {
-        let viewController = LogEntryPresetDetailViewController()
+        let viewController = LogEntryPresetDetailViewController(context: .new)
         present(UINavigationController(rootViewController: viewController), animated: true)
     }
     
@@ -153,7 +154,15 @@ extension LogActivityViewController: UICollectionViewDelegate, UICollectionViewD
             // Log new activity flow
             present(UINavigationController(rootViewController: LogEntryDetailViewController()), animated: true)
         } else {
-
+            guard let viewModel = viewModels[safe: indexPath.row] else {
+                Log.assert("Failed to get view model at index path \(indexPath)")
+                return
+            }
+            guard let preset = viewModel.logEntryPreset else {
+                Log.assert("View model unexpectedly missing a preset \(viewModel)")
+                return
+            }
+            present(UINavigationController(rootViewController: LogEntryDetailViewController(logEntryPreset: preset)), animated: true)
         }
     }
 

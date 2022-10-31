@@ -6,7 +6,6 @@ target 'Taicho' do
   use_frameworks!
 
   # Pods for Taicho
-  pod 'EmojiPicker'
 
   target 'TaichoTests' do
     inherit! :search_paths

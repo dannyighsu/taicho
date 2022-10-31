@@ -9,6 +9,29 @@
 /* Begin PBXBuildFile section */
 		1C43A6923464D6543966318C /* Pods_TaichoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16E084ACDC6A0E817AADD13E /* Pods_TaichoTests.framework */; };
 		4668C9511031320BA12146C3 /* Pods_Taicho.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B00A2764B43A6B37D7B6068B /* Pods_Taicho.framework */; };
+		65566871290E04D3000F926D /* EmojiPickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6556684C290E04D3000F926D /* EmojiPickerViewModel.swift */; };
+		65566872290E04D3000F926D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6556684F290E04D3000F926D /* Localizable.strings */; };
+		65566873290E04D3000F926D /* EmojiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65566853290E04D3000F926D /* EmojiModel.swift */; };
+		65566874290E04D3000F926D /* PickerArrowDirectionMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65566854290E04D3000F926D /* PickerArrowDirectionMode.swift */; };
+		65566875290E04D3000F926D /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65566855290E04D3000F926D /* Configuration.swift */; };
+		65566876290E04D3000F926D /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65566858290E04D3000F926D /* UIView.swift */; };
+		65566877290E04D3000F926D /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65566859290E04D3000F926D /* UIColor.swift */; };
+		65566878290E04D3000F926D /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6556685B290E04D3000F926D /* Array.swift */; };
+		65566879290E04D3000F926D /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6556685D290E04D3000F926D /* Observable.swift */; };
+		6556687A290E04D3000F926D /* EmojiPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6556685F290E04D3000F926D /* EmojiPickerViewController.swift */; };
+		6556687B290E04D3000F926D /* EmojiCollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65566860290E04D3000F926D /* EmojiCollectionViewHeader.swift */; };
+		6556687C290E04D3000F926D /* EmojiCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65566861290E04D3000F926D /* EmojiCollectionViewCell.swift */; };
+		6556687D290E04D3000F926D /* EmojiCategoryIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65566864290E04D3000F926D /* EmojiCategoryIconView.swift */; };
+		6556687E290E04D3000F926D /* TouchableEmojiCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65566865290E04D3000F926D /* TouchableEmojiCategoryView.swift */; };
+		6556687F290E04D3000F926D /* EmojiPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65566866290E04D3000F926D /* EmojiPickerView.swift */; };
+		65566880290E04D3000F926D /* EmojiPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65566867290E04D3000F926D /* EmojiPicker.swift */; };
+		65566881290E04D3000F926D /* Unicode 5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6556686A290E04D3000F926D /* Unicode 5.swift */; };
+		65566882290E04D3000F926D /* Unicode 13v1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6556686B290E04D3000F926D /* Unicode 13v1.swift */; };
+		65566883290E04D3000F926D /* Unicode 14.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6556686C290E04D3000F926D /* Unicode 14.swift */; };
+		65566884290E04D3000F926D /* Unicode 12.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6556686D290E04D3000F926D /* Unicode 12.swift */; };
+		65566885290E04D3000F926D /* Unicode 13.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6556686E290E04D3000F926D /* Unicode 13.swift */; };
+		65566886290E04D3000F926D /* Unicode 11.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6556686F290E04D3000F926D /* Unicode 11.swift */; };
+		65566887290E04D3000F926D /* UnicodeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65566870290E04D3000F926D /* UnicodeManager.swift */; };
 		65C801AE28FA2102000B80C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C801AD28FA2102000B80C6 /* AppDelegate.swift */; };
 		65C801B028FA2102000B80C6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C801AF28FA2102000B80C6 /* SceneDelegate.swift */; };
 		65C801B228FA2102000B80C6 /* LogEntryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C801B128FA2102000B80C6 /* LogEntryListViewController.swift */; };
@@ -75,6 +98,30 @@
 		37906082D4080BDC0672847B /* Pods-TaichoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaichoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TaichoTests/Pods-TaichoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4569934EA20A245C795FA02C /* Pods-TaichoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaichoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TaichoUITests/Pods-TaichoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		544C8F65D41B77308B79595F /* Pods_TaichoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaichoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6556684C290E04D3000F926D /* EmojiPickerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiPickerViewModel.swift; sourceTree = "<group>"; };
+		65566850290E04D3000F926D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		65566851290E04D3000F926D /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		65566853290E04D3000F926D /* EmojiModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiModel.swift; sourceTree = "<group>"; };
+		65566854290E04D3000F926D /* PickerArrowDirectionMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerArrowDirectionMode.swift; sourceTree = "<group>"; };
+		65566855290E04D3000F926D /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		65566858290E04D3000F926D /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		65566859290E04D3000F926D /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		6556685B290E04D3000F926D /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		6556685D290E04D3000F926D /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		6556685F290E04D3000F926D /* EmojiPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiPickerViewController.swift; sourceTree = "<group>"; };
+		65566860290E04D3000F926D /* EmojiCollectionViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiCollectionViewHeader.swift; sourceTree = "<group>"; };
+		65566861290E04D3000F926D /* EmojiCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiCollectionViewCell.swift; sourceTree = "<group>"; };
+		65566864290E04D3000F926D /* EmojiCategoryIconView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiCategoryIconView.swift; sourceTree = "<group>"; };
+		65566865290E04D3000F926D /* TouchableEmojiCategoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchableEmojiCategoryView.swift; sourceTree = "<group>"; };
+		65566866290E04D3000F926D /* EmojiPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiPickerView.swift; sourceTree = "<group>"; };
+		65566867290E04D3000F926D /* EmojiPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiPicker.swift; sourceTree = "<group>"; };
+		6556686A290E04D3000F926D /* Unicode 5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Unicode 5.swift"; sourceTree = "<group>"; };
+		6556686B290E04D3000F926D /* Unicode 13v1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Unicode 13v1.swift"; sourceTree = "<group>"; };
+		6556686C290E04D3000F926D /* Unicode 14.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Unicode 14.swift"; sourceTree = "<group>"; };
+		6556686D290E04D3000F926D /* Unicode 12.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Unicode 12.swift"; sourceTree = "<group>"; };
+		6556686E290E04D3000F926D /* Unicode 13.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Unicode 13.swift"; sourceTree = "<group>"; };
+		6556686F290E04D3000F926D /* Unicode 11.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Unicode 11.swift"; sourceTree = "<group>"; };
+		65566870290E04D3000F926D /* UnicodeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnicodeManager.swift; sourceTree = "<group>"; };
 		65C801AA28FA2102000B80C6 /* Taicho.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Taicho.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65C801AD28FA2102000B80C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		65C801AF28FA2102000B80C6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -153,6 +200,140 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6556684A290E04D3000F926D /* EmojiPicker */ = {
+			isa = PBXGroup;
+			children = (
+				6556684B290E04D3000F926D /* ViewModel */,
+				6556684D290E04D3000F926D /* Resources */,
+				65566852290E04D3000F926D /* Models */,
+				65566856290E04D3000F926D /* Common */,
+				6556685C290E04D3000F926D /* Bindings */,
+				6556685E290E04D3000F926D /* Views */,
+				65566867290E04D3000F926D /* EmojiPicker.swift */,
+				65566868290E04D3000F926D /* Services */,
+			);
+			path = EmojiPicker;
+			sourceTree = "<group>";
+		};
+		6556684B290E04D3000F926D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				6556684C290E04D3000F926D /* EmojiPickerViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		6556684D290E04D3000F926D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6556684E290E04D3000F926D /* Localization */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		6556684E290E04D3000F926D /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				6556684F290E04D3000F926D /* Localizable.strings */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
+		65566852290E04D3000F926D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				65566853290E04D3000F926D /* EmojiModel.swift */,
+				65566854290E04D3000F926D /* PickerArrowDirectionMode.swift */,
+				65566855290E04D3000F926D /* Configuration.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		65566856290E04D3000F926D /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				65566857290E04D3000F926D /* UIKit */,
+				6556685A290E04D3000F926D /* Foundation */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		65566857290E04D3000F926D /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				65566858290E04D3000F926D /* UIView.swift */,
+				65566859290E04D3000F926D /* UIColor.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		6556685A290E04D3000F926D /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				6556685B290E04D3000F926D /* Array.swift */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
+		6556685C290E04D3000F926D /* Bindings */ = {
+			isa = PBXGroup;
+			children = (
+				6556685D290E04D3000F926D /* Observable.swift */,
+			);
+			path = Bindings;
+			sourceTree = "<group>";
+		};
+		6556685E290E04D3000F926D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6556685F290E04D3000F926D /* EmojiPickerViewController.swift */,
+				65566860290E04D3000F926D /* EmojiCollectionViewHeader.swift */,
+				65566861290E04D3000F926D /* EmojiCollectionViewCell.swift */,
+				65566862290E04D3000F926D /* Views */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		65566862290E04D3000F926D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				65566863290E04D3000F926D /* EmojiCategoryView */,
+				65566866290E04D3000F926D /* EmojiPickerView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		65566863290E04D3000F926D /* EmojiCategoryView */ = {
+			isa = PBXGroup;
+			children = (
+				65566864290E04D3000F926D /* EmojiCategoryIconView.swift */,
+				65566865290E04D3000F926D /* TouchableEmojiCategoryView.swift */,
+			);
+			path = EmojiCategoryView;
+			sourceTree = "<group>";
+		};
+		65566868290E04D3000F926D /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				65566869290E04D3000F926D /* Unicode */,
+				65566870290E04D3000F926D /* UnicodeManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		65566869290E04D3000F926D /* Unicode */ = {
+			isa = PBXGroup;
+			children = (
+				6556686A290E04D3000F926D /* Unicode 5.swift */,
+				6556686B290E04D3000F926D /* Unicode 13v1.swift */,
+				6556686C290E04D3000F926D /* Unicode 14.swift */,
+				6556686D290E04D3000F926D /* Unicode 12.swift */,
+				6556686E290E04D3000F926D /* Unicode 13.swift */,
+				6556686F290E04D3000F926D /* Unicode 11.swift */,
+			);
+			path = Unicode;
+			sourceTree = "<group>";
+		};
 		65C801A128FA2102000B80C6 = {
 			isa = PBXGroup;
 			children = (
@@ -178,6 +359,7 @@
 		65C801AC28FA2102000B80C6 /* Taicho */ = {
 			isa = PBXGroup;
 			children = (
+				6556684A290E04D3000F926D /* EmojiPicker */,
 				65C801F928FC8396000B80C6 /* Assets */,
 				65C801F828FC8380000B80C6 /* Utils */,
 				65C801F728FC8374000B80C6 /* App */,
@@ -351,7 +533,6 @@
 				65C801A628FA2102000B80C6 /* Sources */,
 				65C801A728FA2102000B80C6 /* Frameworks */,
 				65C801A828FA2102000B80C6 /* Resources */,
-				53415388251F7206BCB25307 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -430,6 +611,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 65C801A128FA2102000B80C6;
 			productRefGroup = 65C801AB28FA2102000B80C6 /* Products */;
@@ -449,6 +631,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				65C801BD28FA2103000B80C6 /* LaunchScreen.storyboard in Resources */,
+				65566872290E04D3000F926D /* Localizable.strings in Resources */,
 				65C801BA28FA2103000B80C6 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -490,28 +673,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		53415388251F7206BCB25307 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Taicho/Pods-Taicho-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/EmojiPicker/EmojiPicker.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EmojiPicker.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Taicho/Pods-Taicho-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D5592827D809BA9E6E443053 /* [CP] Check Pods Manifest.lock */ = {
@@ -565,37 +726,59 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65566876290E04D3000F926D /* UIView.swift in Sources */,
+				65566887290E04D3000F926D /* UnicodeManager.swift in Sources */,
 				65C801FB28FC8516000B80C6 /* LogEntryPresetDataManager.swift in Sources */,
 				65C8021728FFA651000B80C6 /* LogEntryListCellViewModel.swift in Sources */,
+				65566882290E04D3000F926D /* Unicode 13v1.swift in Sources */,
+				65566874290E04D3000F926D /* PickerArrowDirectionMode.swift in Sources */,
 				65C801E528FA2541000B80C6 /* TaichoContainer.swift in Sources */,
+				6556687C290E04D3000F926D /* EmojiCollectionViewCell.swift in Sources */,
 				65C801FE28FC90F7000B80C6 /* Log.swift in Sources */,
 				65C8021B29045B12000B80C6 /* LogEntryListCell.swift in Sources */,
 				65C8020C28FE439A000B80C6 /* LogEntryDetailPropertyView.swift in Sources */,
 				65C801E128FA227E000B80C6 /* UIUtils.swift in Sources */,
+				65566878290E04D3000F926D /* Array.swift in Sources */,
 				65C801B228FA2102000B80C6 /* LogEntryListViewController.swift in Sources */,
 				65C8022C290C31A0000B80C6 /* TaichoEntityDataManager.swift in Sources */,
 				65C801F128FB898D000B80C6 /* CoreDataEntityObject.swift in Sources */,
+				6556687F290E04D3000F926D /* EmojiPickerView.swift in Sources */,
 				65C8022A290A4A3F000B80C6 /* BaseTabBarController.swift in Sources */,
+				65566884290E04D3000F926D /* Unicode 12.swift in Sources */,
 				65C801ED28FB43CB000B80C6 /* EntityField.swift in Sources */,
+				6556687A290E04D3000F926D /* EmojiPickerViewController.swift in Sources */,
 				65C8020728FD0EE5000B80C6 /* LogActivityViewController.swift in Sources */,
 				65C801F328FC7E2C000B80C6 /* TaichoEntity.swift in Sources */,
 				65C802192901043B000B80C6 /* Optional+Taicho.swift in Sources */,
 				65C8020228FCFD2D000B80C6 /* UIConstants.swift in Sources */,
 				65C801AE28FA2102000B80C6 /* AppDelegate.swift in Sources */,
+				65566879290E04D3000F926D /* Observable.swift in Sources */,
 				65C8020E28FE5C80000B80C6 /* CGSize+Taicho.swift in Sources */,
 				65C801EB28FB3D79000B80C6 /* LogEntryPreset.swift in Sources */,
+				65566886290E04D3000F926D /* Unicode 11.swift in Sources */,
 				65C8020528FD0DFD000B80C6 /* Collection+Taicho.swift in Sources */,
 				65C802232905E220000B80C6 /* LogActivityOptionCell.swift in Sources */,
 				65C802272908F864000B80C6 /* ProductivtiyPickerView.swift in Sources */,
 				65C801E328FA2481000B80C6 /* PersistenceController.swift in Sources */,
+				65566871290E04D3000F926D /* EmojiPickerViewModel.swift in Sources */,
+				65566883290E04D3000F926D /* Unicode 14.swift in Sources */,
+				6556687E290E04D3000F926D /* TouchableEmojiCategoryView.swift in Sources */,
+				65566880290E04D3000F926D /* EmojiPicker.swift in Sources */,
 				65C801E928FB39B8000B80C6 /* LogEntry.swift in Sources */,
+				6556687D290E04D3000F926D /* EmojiCategoryIconView.swift in Sources */,
 				65C8021028FE6101000B80C6 /* UIEdgeInsets+Taicho.swift in Sources */,
 				65C801B028FA2102000B80C6 /* SceneDelegate.swift in Sources */,
+				65566881290E04D3000F926D /* Unicode 5.swift in Sources */,
+				65566877290E04D3000F926D /* UIColor.swift in Sources */,
 				65C8021428FF8A70000B80C6 /* UITextView+Taicho.swift in Sources */,
 				65C801F528FC8317000B80C6 /* LogEntryDataManager.swift in Sources */,
 				65C8021D29045F6C000B80C6 /* UILabel+Taicho.swift in Sources */,
 				65C8021F2904662D000B80C6 /* UITableViewCell+Taicho.swift in Sources */,
+				6556687B290E04D3000F926D /* EmojiCollectionViewHeader.swift in Sources */,
+				65566873290E04D3000F926D /* EmojiModel.swift in Sources */,
+				65566875290E04D3000F926D /* Configuration.swift in Sources */,
 				65C802212905DBFE000B80C6 /* LogActivityOptionViewModel.swift in Sources */,
+				65566885290E04D3000F926D /* Unicode 13.swift in Sources */,
 				65C802252907A554000B80C6 /* LogEntryPresetDetailViewController.swift in Sources */,
 				65C8020928FD1DE4000B80C6 /* DateUtils.swift in Sources */,
 				65C801B828FA2102000B80C6 /* Taicho.xcdatamodeld in Sources */,
@@ -636,6 +819,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		6556684F290E04D3000F926D /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				65566850290E04D3000F926D /* en */,
+				65566851290E04D3000F926D /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		65C801BB28FA2103000B80C6 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

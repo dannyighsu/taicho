@@ -7,16 +7,21 @@
 
 import Foundation
 import UIKit
-import EmojiPicker
 
 /**
  Displays the full details of a single log entry preset. Allows for editing and saving the preset.
  */
 class LogEntryPresetDetailViewController: UIViewController {
 
+    enum Context {
+        case edit
+        case new
+    }
+
     // MARK: - Properties
 
     private let logEntryPreset: LogEntryPreset?
+    private let context: LogEntryPresetDetailViewController.Context
     private lazy var selectedIcon = logEntryPreset?.icon ?? UIConstants.notesEmoji
     private var allPropertyViews: [LogEntryDetailPropertyView] {
         return [namePropertyView, productivityPropertyView, iconPropertyView]
@@ -42,8 +47,9 @@ class LogEntryPresetDetailViewController: UIViewController {
 
     // MARK: - Initialization
 
-    init(logEntryPreset: LogEntryPreset? = nil) {
+    init(logEntryPreset: LogEntryPreset? = nil, context: LogEntryPresetDetailViewController.Context = .new) {
         self.logEntryPreset = logEntryPreset
+        self.context = context
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -136,7 +142,7 @@ class LogEntryPresetDetailViewController: UIViewController {
 
     private func configureNavigationItem() {
         navigationController.assertIfNil()?.navigationBar.backgroundColor = .white
-        navigationItem.title = "Create New Preset"
+        navigationItem.title = context == .edit ? "Edit Preset" : "Create New Preset"
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .cancel,
             target: self,
@@ -178,11 +184,8 @@ extension LogEntryPresetDetailViewController: LogEntryDetailPropertyViewDelegate
     }
 
     private func showEmojiPicker() {
-        let emojiPickerVC = EmojiPicker.viewController
-        emojiPickerVC.sourceRect = view.frame
-        emojiPickerVC.delegate = self
-        present(emojiPickerVC, animated: true)
-        
+        let configuration = EmojiPicker.Configuration(sourceViewController: self, sender: iconPropertyView.button)
+        EmojiPicker.present(with: configuration)
     }
 
 }
@@ -195,9 +198,9 @@ extension LogEntryPresetDetailViewController: ProductivityPickerViewDelegate {
 
 }
 
-extension LogEntryPresetDetailViewController: EmojiPickerViewControllerDelegate {
+extension LogEntryPresetDetailViewController: EmojiPickerDelegate {
 
-    func emojiPickerViewController(_ controller: EmojiPickerViewController, didSelect emoji: String) {
+    func didGetEmoji(emoji: String) {
         selectedIcon = emoji
         iconPropertyView.iconImage = UIUtils.emojiImage(fromText: emoji)
     }
