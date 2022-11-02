@@ -134,7 +134,7 @@ extension LogEntryListViewController: UITableViewDelegate, UITableViewDataSource
             return
         }
         let navigationController = UINavigationController(
-            rootViewController: LogEntryDetailViewController(logEntry: viewModel.logEntry))
+            rootViewController: LogEntryDetailViewController(logEntry: viewModel.logEntry, context: .edit))
         present(navigationController, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }

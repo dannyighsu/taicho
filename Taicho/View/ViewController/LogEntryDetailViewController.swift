@@ -46,6 +46,7 @@ class LogEntryDetailViewController: UIViewController {
     }
 
     private let productivityPicker = ProductivityPickerView()
+    private let timePicker = UIDatePicker()
     
     // These are defaulted to 1000 just to ignore the annoying constraint break warning. In reality they're dynamically sized.
     private lazy var nameHeightConstraint = namePropertyView.heightAnchor.constraint(equalToConstant: 1000)
@@ -102,6 +103,12 @@ class LogEntryDetailViewController: UIViewController {
 
         productivityPicker.productivityPickerDelegate = self
         productivityPropertyView.propertyTextView.inputView = productivityPicker
+
+        timePicker.datePickerMode = .dateAndTime
+        timePicker.preferredDatePickerStyle = .wheels
+        timePicker.backgroundColor = .white
+        timePicker.addTarget(self, action: #selector(timeWasSelected(_:)), for: .valueChanged)
+        timePropertyView.propertyTextView.inputView = timePicker
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -130,7 +137,7 @@ class LogEntryDetailViewController: UIViewController {
     @objc func save() {
         allPropertyViews.forEach { $0.resignFirstResponder() }
 
-        guard let name = namePropertyView.propertyTextView.text else {
+        guard let name = namePropertyView.propertyTextView.text, name.count > 0 else {
             present(UIUtils.getErrorAlert("Error! Log must have a name."), animated: true)
             return
         }
@@ -182,6 +189,11 @@ class LogEntryDetailViewController: UIViewController {
         if let navigationController = navigationController {
             UIUtils.addDividerToBottomOfView(navigationController.navigationBar)
         }
+    }
+
+    @objc
+    func timeWasSelected(_ sender: UIDatePicker) {
+        timePropertyView.propertyTextView.text = DateUtils.getDisplayFormat(sender.date)
     }
     
 }

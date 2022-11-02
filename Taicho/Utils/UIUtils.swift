@@ -16,10 +16,14 @@ class UIUtils {
         return alertController
     }
 
-    static func getAlertBottomSheet(title: String, message: String? = nil) -> UIAlertController {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
-        alertController.addAction(getDismissAction(alertController))
-        return alertController
+    static func getAlertBottomSheet(title: String? = nil, message: String? = nil) -> UIAlertController {
+        return UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+    }
+
+    static func getDismissAction(_ alertController: UIAlertController) -> UIAlertAction {
+        return UIAlertAction(title: "Cancel", style: .default, handler: { [weak alertController] _ in
+            alertController?.dismiss(animated: true, completion: nil)
+        })
     }
     
     static func addDividerToBottomOfView(_ view: UIView) {
@@ -66,14 +70,6 @@ class UIUtils {
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return image
-    }
-
-    // MARK: - Helpers
-
-    private static func getDismissAction(_ alertController: UIAlertController) -> UIAlertAction {
-        return UIAlertAction(title: "Cancel", style: .default, handler: { [weak alertController] _ in
-            alertController?.dismiss(animated: true, completion: nil)
-        })
     }
     
 }

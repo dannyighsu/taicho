@@ -45,8 +45,8 @@ class LogActivityViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        modalPresentationStyle = .overFullScreen
 
+        view.backgroundColor = .white
         activityOptionCollectionView.delegate = self
         activityOptionCollectionView.dataSource = self
         activityOptionCollectionView.register(LogActivityOptionCell.self, forCellWithReuseIdentifier: LogActivityOptionCell.reuseIdentifier)
@@ -55,8 +55,8 @@ class LogActivityViewController: UIViewController {
         NSLayoutConstraint.activate([
             activityOptionCollectionView.topAnchor.constraint(equalTo: view.topAnchor),
             activityOptionCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            activityOptionCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            activityOptionCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            activityOptionCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: UIConstants.interItemSpacing),
+            activityOptionCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -UIConstants.interItemSpacing)
         ])
 
         activityOptionCollectionView.addGestureRecognizer(UILongPressGestureRecognizer(
@@ -185,11 +185,17 @@ extension LogActivityViewController: UICollectionViewDelegate, UICollectionViewD
             return
         }
 
-        let actionSheet = UIUtils.getAlertBottomSheet(title: "Delete This Preset?")
+        let actionSheet = UIUtils.getAlertBottomSheet()
+        actionSheet.addAction(UIAlertAction(title: "Edit", style: .default, handler: { [weak self, weak actionSheet] action in
+            actionSheet?.dismiss(animated: false, completion: {
+                self?.present(UINavigationController(rootViewController: LogEntryPresetDetailViewController(logEntryPreset: preset, context: .edit)), animated: true)
+            })
+        }))
         actionSheet.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak actionSheet] action in
             TaichoContainer.container.logEntryPresetDataManager.delete(preset)
             actionSheet?.dismiss(animated: true)
         }))
+        actionSheet.addAction(UIUtils.getDismissAction(actionSheet))
         present(actionSheet, animated: true)
     }
 

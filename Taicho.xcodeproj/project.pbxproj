@@ -69,7 +69,7 @@
 		65C802212905DBFE000B80C6 /* LogActivityOptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C802202905DBFE000B80C6 /* LogActivityOptionViewModel.swift */; };
 		65C802232905E220000B80C6 /* LogActivityOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C802222905E220000B80C6 /* LogActivityOptionCell.swift */; };
 		65C802252907A554000B80C6 /* LogEntryPresetDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C802242907A554000B80C6 /* LogEntryPresetDetailViewController.swift */; };
-		65C802272908F864000B80C6 /* ProductivtiyPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C802262908F864000B80C6 /* ProductivtiyPickerView.swift */; };
+		65C802272908F864000B80C6 /* ProductivityPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C802262908F864000B80C6 /* ProductivityPickerView.swift */; };
 		65C8022A290A4A3F000B80C6 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C80229290A4A3F000B80C6 /* BaseTabBarController.swift */; };
 		65C8022C290C31A0000B80C6 /* TaichoEntityDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C8022B290C31A0000B80C6 /* TaichoEntityDataManager.swift */; };
 		EF4ECF8C5035D88A525AA704 /* Pods_TaichoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 544C8F65D41B77308B79595F /* Pods_TaichoUITests.framework */; };
@@ -163,7 +163,7 @@
 		65C802202905DBFE000B80C6 /* LogActivityOptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogActivityOptionViewModel.swift; sourceTree = "<group>"; };
 		65C802222905E220000B80C6 /* LogActivityOptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogActivityOptionCell.swift; sourceTree = "<group>"; };
 		65C802242907A554000B80C6 /* LogEntryPresetDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogEntryPresetDetailViewController.swift; sourceTree = "<group>"; };
-		65C802262908F864000B80C6 /* ProductivtiyPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductivtiyPickerView.swift; sourceTree = "<group>"; };
+		65C802262908F864000B80C6 /* ProductivityPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductivityPickerView.swift; sourceTree = "<group>"; };
 		65C80229290A4A3F000B80C6 /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 		65C8022B290C31A0000B80C6 /* TaichoEntityDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaichoEntityDataManager.swift; sourceTree = "<group>"; };
 		695F80B79ECAC5DA2777D011 /* Pods-TaichoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaichoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TaichoTests/Pods-TaichoTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -470,7 +470,7 @@
 		65C8020A28FE438F000B80C6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				65C802262908F864000B80C6 /* ProductivtiyPickerView.swift */,
+				65C802262908F864000B80C6 /* ProductivityPickerView.swift */,
 				65C8020B28FE439A000B80C6 /* LogEntryDetailPropertyView.swift */,
 				65C8021A29045B12000B80C6 /* LogEntryListCell.swift */,
 				65C802222905E220000B80C6 /* LogActivityOptionCell.swift */,
@@ -758,7 +758,7 @@
 				65566886290E04D3000F926D /* Unicode 11.swift in Sources */,
 				65C8020528FD0DFD000B80C6 /* Collection+Taicho.swift in Sources */,
 				65C802232905E220000B80C6 /* LogActivityOptionCell.swift in Sources */,
-				65C802272908F864000B80C6 /* ProductivtiyPickerView.swift in Sources */,
+				65C802272908F864000B80C6 /* ProductivityPickerView.swift in Sources */,
 				65C801E328FA2481000B80C6 /* PersistenceController.swift in Sources */,
 				65566871290E04D3000F926D /* EmojiPickerViewModel.swift in Sources */,
 				65566883290E04D3000F926D /* Unicode 14.swift in Sources */,
