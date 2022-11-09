@@ -115,10 +115,11 @@ class LogEntry: NSManagedObject, TaichoEntity {
     }
     var timezone: TimeZone {
         get {
-            guard let timezone = TimeZone(identifier: LogEntry.timezoneKey) else {
-                Log.assert("Failed to serialize timezone.")
-                return TimeZone.current
-            }
+            guard let timezoneIdentifier = (value(forKey: LogEntry.timezoneKey) as? String),
+                  let timezone = TimeZone(identifier: timezoneIdentifier) else {
+                      Log.assert("Failed to serialize timezone.")
+                      return TimeZone.current
+                  }
             return timezone
         }
         set {

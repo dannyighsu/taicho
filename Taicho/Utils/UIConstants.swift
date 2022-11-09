@@ -10,7 +10,7 @@ import UIKit
 
 struct UIConstants {
     
-    static let sideMargin: CGFloat = 32
+    static let sideMargin: CGFloat = 16
     static let fontSize = UIFont.systemFontSize
     static let textFieldHeight: CGFloat = UIFont.systemFontSize + 12
     static let verticalMargin: CGFloat = 64

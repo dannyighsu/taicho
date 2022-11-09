@@ -43,5 +43,21 @@ struct DateUtils {
         dateformat.timeZone = timezone
         return dateformat
     }
+
+    static func getEndOfDay(for date: Date) -> Date? {
+        var dateComponents = Calendar.current.dateComponents([.day, .year, .hour, .minute, .second], from: date)
+        dateComponents.hour = 23
+        dateComponents.minute = 59
+        dateComponents.second = 59
+        return Calendar.current.date(from: dateComponents)
+    }
+
+    static func getStartOfDay(for date: Date) -> Date? {
+        var dateComponents = Calendar.current.dateComponents([.day, .year, .hour, .minute, .second], from: date)
+        dateComponents.hour = 0
+        dateComponents.minute = 0
+        dateComponents.second = 0
+        return Calendar.current.date(from: dateComponents)
+    }
     
 }

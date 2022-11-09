@@ -33,8 +33,7 @@ class LogEntryPresetDataManager: TaichoEntityDataManager<LogEntryPreset> {
      Gets log entries for the given page size and offset.
      */
     func getAll() -> [LogEntryPreset] {
-        let result = TaichoContainer.container.persistenceController.getAllObjects(LogEntryPreset.objectName)
-        return result.compactMap { ($0 as? LogEntryPreset).assertIfNil() }
+        return TaichoContainer.container.persistenceController.getAllObjects(LogEntryPreset.objectName, objectType: LogEntryPreset.self)
     }
 
     /**

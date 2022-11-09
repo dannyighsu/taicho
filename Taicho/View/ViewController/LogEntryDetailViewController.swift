@@ -46,7 +46,7 @@ class LogEntryDetailViewController: UIViewController {
     }
 
     private let productivityPicker = ProductivityPickerView()
-    private let timePicker = UIDatePicker()
+    private let timePicker = UIUtils.getDefaultTimePicker()
     
     // These are defaulted to 1000 just to ignore the annoying constraint break warning. In reality they're dynamically sized.
     private lazy var nameHeightConstraint = namePropertyView.heightAnchor.constraint(equalToConstant: 1000)
@@ -104,9 +104,6 @@ class LogEntryDetailViewController: UIViewController {
         productivityPicker.productivityPickerDelegate = self
         productivityPropertyView.propertyTextView.inputView = productivityPicker
 
-        timePicker.datePickerMode = .dateAndTime
-        timePicker.preferredDatePickerStyle = .wheels
-        timePicker.backgroundColor = .white
         timePicker.addTarget(self, action: #selector(timeWasSelected(_:)), for: .valueChanged)
         timePropertyView.propertyTextView.inputView = timePicker
     }

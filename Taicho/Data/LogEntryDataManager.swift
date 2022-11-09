@@ -48,8 +48,47 @@ final class LogEntryDataManager: TaichoEntityDataManager<LogEntry> {
      Gets log entries for the given page size and offset.
      */
     func getAll() -> [LogEntry] {
-        let result = TaichoContainer.container.persistenceController.getAllObjects(LogEntry.objectName)
-        return result.compactMap { ($0 as? LogEntry).assertIfNil() }
+        return TaichoContainer.container.persistenceController.getAllObjects(LogEntry.objectName, objectType: LogEntry.self)
+    }
+
+    /**
+     Deletes the given log entry.
+     */
+    func delete(_ logEntry: LogEntry) {
+        delete([logEntry])
+    }
+
+    /**
+     Deletes the given entries.
+     */
+    func delete(_ logEntries: [LogEntry]) {
+        TaichoContainer.container.persistenceController.delete(logEntries)
+    }
+
+    /**
+     Returns all log entries whose names contain the given string value.
+     */
+    func search(name nameString: String? = nil, date: Date? = nil) -> [LogEntry] {
+        var queryString = ""
+        var args: [Any] = []
+        if let nameString = nameString {
+            queryString += "name LIKE %@"
+            args.append(nameString)
+        }
+        if let date = date {
+            guard let startOfDate = DateUtils.getStartOfDay(for: date),
+                  let endOfDate = DateUtils.getEndOfDay(for: date) else {
+                      Log.assert("Failed to get start and end from date")
+                      return []
+                  }
+            if queryString.count > 0 {
+                queryString += " AND "
+            }
+            queryString += "(date >= %@) AND (date <= %@)"
+            args += [startOfDate, endOfDate]
+        }
+        let predicate = NSPredicate(format: queryString, args)
+        return TaichoContainer.container.persistenceController.getAllObjects(LogEntry.objectName, objectType: LogEntry.self, predicate: predicate)
     }
     
 }

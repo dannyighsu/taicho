@@ -32,6 +32,8 @@
 		65566885290E04D3000F926D /* Unicode 13.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6556686E290E04D3000F926D /* Unicode 13.swift */; };
 		65566886290E04D3000F926D /* Unicode 11.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6556686F290E04D3000F926D /* Unicode 11.swift */; };
 		65566887290E04D3000F926D /* UnicodeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65566870290E04D3000F926D /* UnicodeManager.swift */; };
+		6556688929137E25000F926D /* DataUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6556688829137E25000F926D /* DataUtils.swift */; };
+		6556688B291B6AC7000F926D /* LogEntryListSearchHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6556688A291B6AC7000F926D /* LogEntryListSearchHeaderView.swift */; };
 		65C801AE28FA2102000B80C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C801AD28FA2102000B80C6 /* AppDelegate.swift */; };
 		65C801B028FA2102000B80C6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C801AF28FA2102000B80C6 /* SceneDelegate.swift */; };
 		65C801B228FA2102000B80C6 /* LogEntryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C801B128FA2102000B80C6 /* LogEntryListViewController.swift */; };
@@ -122,6 +124,8 @@
 		6556686E290E04D3000F926D /* Unicode 13.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Unicode 13.swift"; sourceTree = "<group>"; };
 		6556686F290E04D3000F926D /* Unicode 11.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Unicode 11.swift"; sourceTree = "<group>"; };
 		65566870290E04D3000F926D /* UnicodeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnicodeManager.swift; sourceTree = "<group>"; };
+		6556688829137E25000F926D /* DataUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataUtils.swift; sourceTree = "<group>"; };
+		6556688A291B6AC7000F926D /* LogEntryListSearchHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogEntryListSearchHeaderView.swift; sourceTree = "<group>"; };
 		65C801AA28FA2102000B80C6 /* Taicho.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Taicho.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65C801AD28FA2102000B80C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		65C801AF28FA2102000B80C6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -438,6 +442,7 @@
 				65C8020128FCFD2D000B80C6 /* UIConstants.swift */,
 				65C801FD28FC90F7000B80C6 /* Log.swift */,
 				65C8020828FD1DE4000B80C6 /* DateUtils.swift */,
+				6556688829137E25000F926D /* DataUtils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -474,6 +479,7 @@
 				65C8020B28FE439A000B80C6 /* LogEntryDetailPropertyView.swift */,
 				65C8021A29045B12000B80C6 /* LogEntryListCell.swift */,
 				65C802222905E220000B80C6 /* LogActivityOptionCell.swift */,
+				6556688A291B6AC7000F926D /* LogEntryListSearchHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -755,10 +761,12 @@
 				65566879290E04D3000F926D /* Observable.swift in Sources */,
 				65C8020E28FE5C80000B80C6 /* CGSize+Taicho.swift in Sources */,
 				65C801EB28FB3D79000B80C6 /* LogEntryPreset.swift in Sources */,
+				6556688929137E25000F926D /* DataUtils.swift in Sources */,
 				65566886290E04D3000F926D /* Unicode 11.swift in Sources */,
 				65C8020528FD0DFD000B80C6 /* Collection+Taicho.swift in Sources */,
 				65C802232905E220000B80C6 /* LogActivityOptionCell.swift in Sources */,
 				65C802272908F864000B80C6 /* ProductivityPickerView.swift in Sources */,
+				6556688B291B6AC7000F926D /* LogEntryListSearchHeaderView.swift in Sources */,
 				65C801E328FA2481000B80C6 /* PersistenceController.swift in Sources */,
 				65566871290E04D3000F926D /* EmojiPickerViewModel.swift in Sources */,
 				65566883290E04D3000F926D /* Unicode 14.swift in Sources */,

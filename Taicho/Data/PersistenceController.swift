@@ -86,8 +86,8 @@ class PersistenceController {
     /**
      Returns all objects of the given object type.
      */
-    func getAllObjects(_ objectName: String, predicate: NSPredicate? = nil) -> [NSManagedObject] {
-        let request = NSFetchRequest<NSManagedObject>(entityName: objectName)
+    func getAllObjects<Object: NSManagedObject>(_ objectName: String, objectType: Object.Type, predicate: NSPredicate? = nil) -> [Object] {
+        let request = NSFetchRequest<Object>(entityName: objectName)
         request.predicate = predicate
         do {
             return try persistentContainer.viewContext.fetch(request)

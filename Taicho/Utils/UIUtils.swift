@@ -16,6 +16,10 @@ class UIUtils {
         return alertController
     }
 
+    static func getConfirmationAlert(_ title: String, message: String? = nil) -> UIAlertController {
+        return UIAlertController(title: title, message: message, preferredStyle: .alert)
+    }
+
     static func getAlertBottomSheet(title: String? = nil, message: String? = nil) -> UIAlertController {
         return UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
     }
@@ -70,6 +74,14 @@ class UIUtils {
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return image
+    }
+
+    static func getDefaultTimePicker() -> UIDatePicker {
+        let timePicker = UIDatePicker()
+        timePicker.datePickerMode = .dateAndTime
+        timePicker.preferredDatePickerStyle = .wheels
+        timePicker.backgroundColor = .white
+        return timePicker
     }
     
 }
