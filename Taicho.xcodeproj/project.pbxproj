@@ -34,6 +34,8 @@
 		65566887290E04D3000F926D /* UnicodeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65566870290E04D3000F926D /* UnicodeManager.swift */; };
 		6556688929137E25000F926D /* DataUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6556688829137E25000F926D /* DataUtils.swift */; };
 		6556688B291B6AC7000F926D /* LogEntryListSearchHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6556688A291B6AC7000F926D /* LogEntryListSearchHeaderView.swift */; };
+		6556688D292057C5000F926D /* UITextField+Taicho.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6556688C292057C5000F926D /* UITextField+Taicho.swift */; };
+		6556688F29208500000F926D /* NSMutableAttributedString+Taicho.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6556688E29208500000F926D /* NSMutableAttributedString+Taicho.swift */; };
 		65C801AE28FA2102000B80C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C801AD28FA2102000B80C6 /* AppDelegate.swift */; };
 		65C801B028FA2102000B80C6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C801AF28FA2102000B80C6 /* SceneDelegate.swift */; };
 		65C801B228FA2102000B80C6 /* LogEntryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C801B128FA2102000B80C6 /* LogEntryListViewController.swift */; };
@@ -126,6 +128,8 @@
 		65566870290E04D3000F926D /* UnicodeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnicodeManager.swift; sourceTree = "<group>"; };
 		6556688829137E25000F926D /* DataUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataUtils.swift; sourceTree = "<group>"; };
 		6556688A291B6AC7000F926D /* LogEntryListSearchHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogEntryListSearchHeaderView.swift; sourceTree = "<group>"; };
+		6556688C292057C5000F926D /* UITextField+Taicho.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Taicho.swift"; sourceTree = "<group>"; };
+		6556688E29208500000F926D /* NSMutableAttributedString+Taicho.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+Taicho.swift"; sourceTree = "<group>"; };
 		65C801AA28FA2102000B80C6 /* Taicho.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Taicho.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65C801AD28FA2102000B80C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		65C801AF28FA2102000B80C6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -468,6 +472,8 @@
 				65C8021328FF8A70000B80C6 /* UITextView+Taicho.swift */,
 				65C802182901043B000B80C6 /* Optional+Taicho.swift */,
 				65C8021C29045F6C000B80C6 /* UILabel+Taicho.swift */,
+				6556688C292057C5000F926D /* UITextField+Taicho.swift */,
+				6556688E29208500000F926D /* NSMutableAttributedString+Taicho.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -749,10 +755,12 @@
 				65C8022C290C31A0000B80C6 /* TaichoEntityDataManager.swift in Sources */,
 				65C801F128FB898D000B80C6 /* CoreDataEntityObject.swift in Sources */,
 				6556687F290E04D3000F926D /* EmojiPickerView.swift in Sources */,
+				6556688F29208500000F926D /* NSMutableAttributedString+Taicho.swift in Sources */,
 				65C8022A290A4A3F000B80C6 /* BaseTabBarController.swift in Sources */,
 				65566884290E04D3000F926D /* Unicode 12.swift in Sources */,
 				65C801ED28FB43CB000B80C6 /* EntityField.swift in Sources */,
 				6556687A290E04D3000F926D /* EmojiPickerViewController.swift in Sources */,
+				6556688D292057C5000F926D /* UITextField+Taicho.swift in Sources */,
 				65C8020728FD0EE5000B80C6 /* LogActivityViewController.swift in Sources */,
 				65C801F328FC7E2C000B80C6 /* TaichoEntity.swift in Sources */,
 				65C802192901043B000B80C6 /* Optional+Taicho.swift in Sources */,

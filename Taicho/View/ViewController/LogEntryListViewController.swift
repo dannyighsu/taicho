@@ -84,7 +84,7 @@ class LogEntryListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureNavigationItem()
-        loadViewModels(with: TaichoContainer.container.logEntryDataManager.getAll())
+        loadAllLogEntries()
     }
 
     private func configureNavigationItem() {
@@ -94,7 +94,7 @@ class LogEntryListViewController: UIViewController {
             target: self,
             action: #selector(shareTapped))
     }
-    
+
     private func updateData() {
         tableView.reloadData()
     }
@@ -102,6 +102,10 @@ class LogEntryListViewController: UIViewController {
     private func loadViewModels(with logEntries: [LogEntry]) {
         viewModels = logEntries.map { LogEntryListCellViewModel($0) }
         updateData()
+    }
+
+    private func loadAllLogEntries() {
+        loadViewModels(with: TaichoContainer.container.logEntryDataManager.getAll())
     }
 
     @objc
@@ -124,6 +128,10 @@ class LogEntryListViewController: UIViewController {
 // MARK: - LogEntryListSearchHeaderViewDelegate
 
 extension LogEntryListViewController: LogEntryListSearchHeaderViewDelegate {
+
+    func searchHeaderClearButtonTapped() {
+        loadAllLogEntries()
+    }
 
     func dateWasSelected(_ date: Date, searchText: String?) {
         loadViewModels(with: TaichoContainer.container.logEntryDataManager.search(name: searchText, date: date))
@@ -223,6 +231,7 @@ extension LogEntryListViewController: UITableViewDelegate, UITableViewDataSource
         viewModels.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .fade)
         TaichoContainer.container.logEntryDataManager.delete(logEntry)
+        TaichoContainer.container.persistenceController.saveContext()
     }
     
 }

@@ -68,11 +68,11 @@ class LogEntry: NSManagedObject, TaichoEntity {
         return "LogEntry"
     }
 
-    fileprivate static let nameKey = "storedName"
-    fileprivate static let timeKey = "storedTime"
-    fileprivate static let timezoneKey = "storedTimezone"
-    fileprivate static let productivityKey = "storedProductivityLevel"
-    fileprivate static let notesKey = "storedNotes"
+    static let nameKey = "storedName"
+    static let timeKey = "storedTime"
+    static let timezoneKey = "storedTimezone"
+    static let productivityKey = "storedProductivityLevel"
+    static let notesKey = "storedNotes"
 
     // MARK: - Properties
 

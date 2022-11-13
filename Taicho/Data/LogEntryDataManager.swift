@@ -71,8 +71,8 @@ final class LogEntryDataManager: TaichoEntityDataManager<LogEntry> {
     func search(name nameString: String? = nil, date: Date? = nil) -> [LogEntry] {
         var queryString = ""
         var args: [Any] = []
-        if let nameString = nameString {
-            queryString += "name LIKE %@"
+        if let nameString = nameString, nameString.count > 0 {
+            queryString += "\(LogEntry.nameKey) LIKE %@"
             args.append(nameString)
         }
         if let date = date {
@@ -84,10 +84,10 @@ final class LogEntryDataManager: TaichoEntityDataManager<LogEntry> {
             if queryString.count > 0 {
                 queryString += " AND "
             }
-            queryString += "(date >= %@) AND (date <= %@)"
-            args += [startOfDate, endOfDate]
+            queryString += "(\(LogEntry.timeKey) >= %@) AND (\(LogEntry.timeKey) < %@)"
+            args += [startOfDate as NSDate, endOfDate as NSDate]
         }
-        let predicate = NSPredicate(format: queryString, args)
+        let predicate = NSPredicate(format: queryString, argumentArray: args)
         return TaichoContainer.container.persistenceController.getAllObjects(LogEntry.objectName, objectType: LogEntry.self, predicate: predicate)
     }
     
