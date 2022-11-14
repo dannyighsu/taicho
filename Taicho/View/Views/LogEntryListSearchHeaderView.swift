@@ -53,6 +53,7 @@ class LogEntryListSearchHeaderView: UITableViewHeaderFooterView {
         dateTextField.addDoneButtonOnKeyboard()
         // This hides the caret in the text field
         dateTextField.tintColor = .clear
+        dateTextField.delegate = self
         resetDateTextFieldText()
         datePicker.datePickerMode = .date
         datePicker.addTarget(self, action: #selector(dateWasSelected(_:)), for: .valueChanged)
@@ -107,6 +108,14 @@ class LogEntryListSearchHeaderView: UITableViewHeaderFooterView {
         return NSMutableAttributedString()
             .with(labelText, font: .systemFont(ofSize: 16, weight: .bold))
             .with(text, font: .systemFont(ofSize: 16, weight: .medium))
+    }
+
+}
+
+extension LogEntryListSearchHeaderView: UITextFieldDelegate {
+
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        dateWasSelected(datePicker)
     }
 
 }

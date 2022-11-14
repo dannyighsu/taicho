@@ -98,7 +98,8 @@ class LogActivityViewController: UIViewController {
         navigationItem.title = LogActivityViewController.title
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem: .add,
+            title: "New Preset",
+            style: .plain,
             target: self,
             action: #selector(addNewPreset))
     }
@@ -193,6 +194,7 @@ extension LogActivityViewController: UICollectionViewDelegate, UICollectionViewD
         }))
         actionSheet.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak actionSheet] action in
             TaichoContainer.container.logEntryPresetDataManager.delete(preset)
+            TaichoContainer.container.persistenceController.saveContext()
             actionSheet?.dismiss(animated: true)
         }))
         actionSheet.addAction(UIUtils.getDismissAction(actionSheet))

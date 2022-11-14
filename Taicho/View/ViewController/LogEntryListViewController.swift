@@ -78,13 +78,12 @@ class LogEntryListViewController: UIViewController {
             self?.updateData()
         })
 
-        updateData()
+        loadAllLogEntries()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureNavigationItem()
-        loadAllLogEntries()
     }
 
     private func configureNavigationItem() {
