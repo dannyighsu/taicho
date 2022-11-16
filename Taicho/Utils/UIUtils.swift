@@ -76,10 +76,25 @@ class UIUtils {
         return image
     }
 
+    static func backgroundColor(for productivityLevel: ProductivityLevel) -> UIColor {
+        switch productivityLevel {
+        case .high:
+            return .blue.withAlphaComponent(0.4)
+        case .medium:
+            return .blue.withAlphaComponent(0.2)
+        case .low:
+            return .blue.withAlphaComponent(0.1)
+        case .none:
+            return .lightGray.withAlphaComponent(0.4)
+        }
+    }
+
     static func getDefaultTimePicker() -> UIDatePicker {
         let timePicker = UIDatePicker()
         timePicker.datePickerMode = .dateAndTime
         timePicker.preferredDatePickerStyle = .wheels
+        timePicker.minuteInterval = 15
+        timePicker.roundsToMinuteInterval = true
         timePicker.backgroundColor = .white
         return timePicker
     }

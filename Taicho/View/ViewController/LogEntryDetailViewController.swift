@@ -32,7 +32,7 @@ class LogEntryDetailViewController: UIViewController {
     private lazy var timePropertyView = LogEntryDetailPropertyView(
         delegate: self,
         labelTitle: "Time",
-        textPrefill: DateUtils.getDisplayFormat(logEntry?.time ?? Date()))
+        textPrefill: DateUtils.getDisplayFormat(logEntry?.time ?? DateUtils.getNowRoundedToNearest15()))
     private lazy var productivityPropertyView = LogEntryDetailPropertyView(
         delegate: self,
         labelTitle: "Productivity Level",

@@ -20,7 +20,7 @@ final class LogEntryDataManager: TaichoEntityDataManager<LogEntry> {
      */
     func create(_ name: String,
                 productivityLevel: ProductivityLevel,
-                date: Date = Date(),
+                date: Date = DateUtils.getNowRoundedToNearest15(),
                 timezone: TimeZone = TimeZone.current,
                 notes: String? = nil) -> LogEntry? {
         let coreDataObject = TaichoContainer.container.persistenceController.createNewObject(objectName: LogEntry.objectName)
@@ -30,7 +30,7 @@ final class LogEntryDataManager: TaichoEntityDataManager<LogEntry> {
         }
         typedObject.name = name
         typedObject.productivityLevel = productivityLevel
-        typedObject.time = date
+        typedObject.time = DateUtils.getDateRoundedToNearest15(date)
         typedObject.timezone = timezone
         typedObject.notes = notes
 

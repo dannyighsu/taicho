@@ -107,7 +107,7 @@ class LogEntry: NSManagedObject, TaichoEntity {
     }
     var time: Date {
         get {
-            return (value(forKey: LogEntry.timeKey) as? Date).assertIfNil() ?? Date()
+            return (value(forKey: LogEntry.timeKey) as? Date).assertIfNil() ?? DateUtils.getNowRoundedToNearest15()
         }
         set {
             setValue(newValue, forKey: LogEntry.timeKey)

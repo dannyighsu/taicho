@@ -59,5 +59,15 @@ struct DateUtils {
         dateComponents.second = 0
         return Calendar.current.date(from: dateComponents)
     }
+
+    static func getDateRoundedToNearest15(_ date: Date) -> Date {
+        // 15 minutes -> 900 seconds
+        let roundedTimeInterval = round(date.timeIntervalSinceReferenceDate / 900.0) * 900.0
+        return Date(timeIntervalSinceReferenceDate: roundedTimeInterval)
+    }
+
+    static func getNowRoundedToNearest15() -> Date {
+        return getDateRoundedToNearest15(Date())
+    }
     
 }

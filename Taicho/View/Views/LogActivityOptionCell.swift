@@ -65,6 +65,10 @@ class LogActivityOptionCell: UICollectionViewCell {
         activityIconView.image = UIUtils.emojiImage(fromText: viewModel.icon, size: CGSize(
             width: UIConstants.iconViewDimension,
             height: UIConstants.iconViewDimension + 8))
+        guard let preset = viewModel.logEntryPreset else {
+            return
+        }
+        backgroundColor = UIUtils.backgroundColor(for: preset.productivityLevel)
     }
 
 }

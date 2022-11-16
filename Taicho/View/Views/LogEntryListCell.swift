@@ -56,19 +56,6 @@ class LogEntryListCell: UITableViewCell {
         + UIConstants.interSectionSpacing * 2 + UIConstants.interItemSpacing
     }
 
-    private static func backgroundColor(for productivityLevel: ProductivityLevel) -> UIColor {
-        switch productivityLevel {
-        case .high:
-            return .blue.withAlphaComponent(0.4)
-        case .medium:
-            return .cyan.withAlphaComponent(0.4)
-        case .low:
-            return .blue.withAlphaComponent(0.2)
-        case .none:
-            return .lightGray.withAlphaComponent(0.4)
-        }
-    }
-
     func load(_ viewModel: LogEntryListCellViewModel) {
         nameLabel.text = viewModel.logEntry.name
         timeLabel.text = DateUtils.getDisplayFormat(viewModel.logEntry.time)
@@ -78,7 +65,7 @@ class LogEntryListCell: UITableViewCell {
             constraint.constant = label.requiredWidth
         }
 
-        backgroundColor = LogEntryListCell.backgroundColor(for: viewModel.logEntry.productivityLevel)
+        backgroundColor = UIUtils.backgroundColor(for: viewModel.logEntry.productivityLevel)
     }
 
 }
