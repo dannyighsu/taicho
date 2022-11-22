@@ -76,6 +76,7 @@
 		65C802272908F864000B80C6 /* ProductivityPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C802262908F864000B80C6 /* ProductivityPickerView.swift */; };
 		65C8022A290A4A3F000B80C6 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C80229290A4A3F000B80C6 /* BaseTabBarController.swift */; };
 		65C8022C290C31A0000B80C6 /* TaichoEntityDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C8022B290C31A0000B80C6 /* TaichoEntityDataManager.swift */; };
+		A1CA9C8E292C84A600500687 /* LogActivityCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CA9C8D292C84A600500687 /* LogActivityCollectionHeaderView.swift */; };
 		EF4ECF8C5035D88A525AA704 /* Pods_TaichoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 544C8F65D41B77308B79595F /* Pods_TaichoUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -176,6 +177,7 @@
 		65C8022B290C31A0000B80C6 /* TaichoEntityDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaichoEntityDataManager.swift; sourceTree = "<group>"; };
 		695F80B79ECAC5DA2777D011 /* Pods-TaichoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaichoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TaichoTests/Pods-TaichoTests.release.xcconfig"; sourceTree = "<group>"; };
 		7268CDCEE6F957892BFE3193 /* Pods-Taicho.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Taicho.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Taicho/Pods-Taicho.debug.xcconfig"; sourceTree = "<group>"; };
+		A1CA9C8D292C84A600500687 /* LogActivityCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogActivityCollectionHeaderView.swift; sourceTree = "<group>"; };
 		B00A2764B43A6B37D7B6068B /* Pods_Taicho.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Taicho.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDBFEF3662AB15F7B1A01AEE /* Pods-Taicho.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Taicho.release.xcconfig"; path = "Pods/Target Support Files/Pods-Taicho/Pods-Taicho.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -483,6 +485,7 @@
 			children = (
 				65C802262908F864000B80C6 /* ProductivityPickerView.swift */,
 				65C8020B28FE439A000B80C6 /* LogEntryDetailPropertyView.swift */,
+				A1CA9C8D292C84A600500687 /* LogActivityCollectionHeaderView.swift */,
 				65C8021A29045B12000B80C6 /* LogEntryListCell.swift */,
 				65C802222905E220000B80C6 /* LogActivityOptionCell.swift */,
 				6556688A291B6AC7000F926D /* LogEntryListSearchHeaderView.swift */,
@@ -795,6 +798,7 @@
 				65566875290E04D3000F926D /* Configuration.swift in Sources */,
 				65C802212905DBFE000B80C6 /* LogActivityOptionViewModel.swift in Sources */,
 				65566885290E04D3000F926D /* Unicode 13.swift in Sources */,
+				A1CA9C8E292C84A600500687 /* LogActivityCollectionHeaderView.swift in Sources */,
 				65C802252907A554000B80C6 /* LogEntryPresetDetailViewController.swift in Sources */,
 				65C8020928FD1DE4000B80C6 /* DateUtils.swift in Sources */,
 				65C801B828FA2102000B80C6 /* Taicho.xcdatamodeld in Sources */,
@@ -986,6 +990,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1014,6 +1019,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

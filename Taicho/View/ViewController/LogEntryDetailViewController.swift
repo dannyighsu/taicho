@@ -135,17 +135,22 @@ class LogEntryDetailViewController: UIViewController {
         allPropertyViews.forEach { $0.resignFirstResponder() }
 
         guard let name = namePropertyView.propertyTextView.text, name.count > 0 else {
-            present(UIUtils.getErrorAlert("Error! Log must have a name."), animated: true)
+            present(UIUtils.getErrorAlert("Log must have a name."), animated: true)
+            return
+        }
+        let maxCharacterCount: Int = 100
+        guard name.count < maxCharacterCount else {
+            present(UIUtils.getErrorAlert("Log name is maximum \(maxCharacterCount) characters."), animated: true)
             return
         }
         guard let timeString = timePropertyView.propertyTextView.text,
               let dateTime = DateUtils.getDate(from: timeString) else {
-                  present(UIUtils.getErrorAlert("Error! Time is invalid."), animated: true)
+                  present(UIUtils.getErrorAlert("Time is invalid."), animated: true)
                   return
               }
         guard let productivityString = productivityPropertyView.propertyTextView.text,
         let productivityLevel = ProductivityLevel.value(from: productivityString) else {
-            present(UIUtils.getErrorAlert("Error! Productivity level is invalid."), animated: true)
+            present(UIUtils.getErrorAlert("Productivity level is invalid."), animated: true)
             return
         }
         let notes = notesPropertyView.propertyTextView.text

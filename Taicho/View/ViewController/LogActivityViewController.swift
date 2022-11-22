@@ -20,7 +20,6 @@ class LogActivityViewController: UIViewController {
     private let activityOptionCollectionView: UICollectionView = {
         let collectionViewLayout = UICollectionViewFlowLayout()
         collectionViewLayout.minimumInteritemSpacing = UIConstants.interSectionSpacing
-        collectionViewLayout.estimatedItemSize = LogActivityOptionCell.sizeRequired
         collectionViewLayout.scrollDirection = .vertical
         return UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
     }()
@@ -129,7 +128,17 @@ class LogActivityViewController: UIViewController {
     
 }
 
-extension LogActivityViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension LogActivityViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: LogActivityOptionCell.reuseIdentifier,
+            for: indexPath) as? LogActivityOptionCell else {
+                Log.assert("Incorrect cell type found for index path \(indexPath)")
+                return .zero
+        }
+        return cell.sizeRequired
+    }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModels.count

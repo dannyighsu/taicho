@@ -13,16 +13,17 @@ import UIKit
  */
 class LogActivityOptionCell: UICollectionViewCell {
 
-    static var sizeRequired: CGSize {
-        let height = UIConstants.iconViewDimension
-        + UIUtils.height(for: "S", font: nameFont)
-        + UIConstants.interItemSpacing
-        + (2 * UIConstants.interSectionSpacing)
-        let width = UIConstants.iconViewDimension + (2 * UIConstants.interSectionSpacing)
-        return CGSize(width: width, height: height)
-    }
     static var reuseIdentifier: String {
         return String(describing: self)
+    }
+    
+    var sizeRequired: CGSize {
+        let height = UIConstants.iconViewDimension
+        // Allow for 2 lines of text.
+        + UIUtils.height(for: "F\nF", font: LogActivityOptionCell.nameFont)
+        + (3 * UIConstants.interItemSpacing)
+        let width = UIConstants.iconViewDimension + (2 * UIConstants.interSectionSpacing)
+        return CGSize(width: width, height: height)
     }
 
     private static let nameFont = UIFont.systemFont(ofSize: 16, weight: .medium)
@@ -42,16 +43,16 @@ class LogActivityOptionCell: UICollectionViewCell {
         activityIconView.clipsToBounds = true
 
         activityNameLabel.font = LogActivityOptionCell.nameFont
-        activityNameLabel.numberOfLines = 0
+        activityNameLabel.numberOfLines = 2
 
         NSLayoutConstraint.activate([
             activityIconView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            activityIconView.topAnchor.constraint(equalTo: topAnchor, constant: UIConstants.interSectionSpacing),
+            activityIconView.topAnchor.constraint(equalTo: topAnchor, constant: UIConstants.interItemSpacing),
             activityIconView.widthAnchor.constraint(equalToConstant: UIConstants.iconViewDimension),
             activityIconView.heightAnchor.constraint(equalToConstant: UIConstants.iconViewDimension),
             activityNameLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             activityNameLabel.topAnchor.constraint(equalTo: activityIconView.bottomAnchor, constant: UIConstants.interItemSpacing),
-            activityNameLabel.widthAnchor.constraint(lessThanOrEqualTo: widthAnchor, constant: -2 * UIConstants.interSectionSpacing)
+            activityNameLabel.widthAnchor.constraint(lessThanOrEqualTo: widthAnchor)
         ])
     }
 
@@ -65,10 +66,6 @@ class LogActivityOptionCell: UICollectionViewCell {
         activityIconView.image = UIUtils.emojiImage(fromText: viewModel.icon, size: CGSize(
             width: UIConstants.iconViewDimension,
             height: UIConstants.iconViewDimension + 8))
-        guard let preset = viewModel.logEntryPreset else {
-            return
-        }
-        backgroundColor = UIUtils.backgroundColor(for: preset.productivityLevel)
     }
 
 }

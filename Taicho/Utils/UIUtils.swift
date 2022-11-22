@@ -67,7 +67,7 @@ class UIUtils {
 
     static func emojiImage(fromText text: String, size: CGSize = UIConstants.iconImageSize) -> UIImage? {
         UIGraphicsBeginImageContextWithOptions(size, false, 0)
-        UIColor.white.set()
+        UIColor.clear.set()
         let rect = CGRect(origin: .zero, size: size)
         UIRectFill(CGRect(origin: .zero, size: size))
         text.draw(in: rect, withAttributes: [.font: UIFont.systemFont(ofSize: UIConstants.iconViewDimension - 4)])
