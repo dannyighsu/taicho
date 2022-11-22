@@ -11,6 +11,8 @@
 xcshareddata/
 xcuserdata/
 Pods/
+Podfile.lock
+
 
 # Generated files
 *.o
