@@ -95,7 +95,6 @@ class UIUtils {
         timePicker.preferredDatePickerStyle = .wheels
         timePicker.minuteInterval = 15
         timePicker.roundsToMinuteInterval = true
-        timePicker.backgroundColor = .white
         return timePicker
     }
     

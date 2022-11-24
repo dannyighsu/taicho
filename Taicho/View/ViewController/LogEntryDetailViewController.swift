@@ -178,7 +178,6 @@ class LogEntryDetailViewController: UIViewController {
     }
     
     private func configureNavigationItem() {
-        navigationController?.navigationBar.backgroundColor = .white
         navigationItem.title = context == .edit ? "Edit Log" : "New Log"
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .cancel,

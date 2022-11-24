@@ -45,7 +45,6 @@ class LogActivityViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .white
         activityOptionCollectionView.delegate = self
         activityOptionCollectionView.dataSource = self
         activityOptionCollectionView.register(LogActivityOptionCell.self, forCellWithReuseIdentifier: LogActivityOptionCell.reuseIdentifier)
