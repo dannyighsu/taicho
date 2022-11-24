@@ -73,6 +73,10 @@ class LogEntry: NSManagedObject, TaichoEntity {
     static let timezoneKey = "storedTimezone"
     static let productivityKey = "storedProductivityLevel"
     static let notesKey = "storedNotes"
+    
+    static var dateKeyPath: String {
+        return #keyPath(LogEntry.storedTime)
+    }
 
     // MARK: - Properties
 

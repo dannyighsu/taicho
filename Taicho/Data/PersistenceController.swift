@@ -86,9 +86,12 @@ class PersistenceController {
     /**
      Returns all objects of the given object type.
      */
-    func getAllObjects<Object: NSManagedObject>(_ objectName: String, objectType: Object.Type, predicate: NSPredicate? = nil) -> [Object] {
+    func getAllObjects<Object: NSManagedObject>(_ objectName: String, objectType: Object.Type, predicate: NSPredicate? = nil, sortDescriptor: NSSortDescriptor? = nil) -> [Object] {
         let request = NSFetchRequest<Object>(entityName: objectName)
         request.predicate = predicate
+        if let sortDescriptor = sortDescriptor {
+            request.sortDescriptors = [sortDescriptor]
+        }
         do {
             return try persistentContainer.viewContext.fetch(request)
         } catch {

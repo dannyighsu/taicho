@@ -48,7 +48,10 @@ final class LogEntryDataManager: TaichoEntityDataManager<LogEntry> {
      Gets log entries for the given page size and offset.
      */
     func getAll() -> [LogEntry] {
-        return TaichoContainer.container.persistenceController.getAllObjects(LogEntry.objectName, objectType: LogEntry.self)
+        return TaichoContainer.container.persistenceController.getAllObjects(
+            LogEntry.objectName,
+            objectType: LogEntry.self,
+            sortDescriptor: NSSortDescriptor(key: LogEntry.dateKeyPath, ascending: false))
     }
 
     /**
@@ -88,7 +91,8 @@ final class LogEntryDataManager: TaichoEntityDataManager<LogEntry> {
             args += [startOfDate as NSDate, endOfDate as NSDate]
         }
         let predicate = NSPredicate(format: queryString, argumentArray: args)
-        return TaichoContainer.container.persistenceController.getAllObjects(LogEntry.objectName, objectType: LogEntry.self, predicate: predicate)
+        let sort = NSSortDescriptor(key: LogEntry.dateKeyPath, ascending: false)
+        return TaichoContainer.container.persistenceController.getAllObjects(LogEntry.objectName, objectType: LogEntry.self, predicate: predicate, sortDescriptor: sort)
     }
     
 }
