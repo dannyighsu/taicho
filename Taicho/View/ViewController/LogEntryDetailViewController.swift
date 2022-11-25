@@ -24,6 +24,7 @@ class LogEntryDetailViewController: UIViewController {
     
     private let logEntry: LogEntry?
     private let context: LogEntryDetailViewController.Context
+    private let defaultProductivity: ProductivityLevel?
     
     private lazy var namePropertyView = LogEntryDetailPropertyView(
         delegate: self,
@@ -36,7 +37,7 @@ class LogEntryDetailViewController: UIViewController {
     private lazy var productivityPropertyView = LogEntryDetailPropertyView(
         delegate: self,
         labelTitle: "Productivity Level",
-        textPrefill: logEntry?.productivityLevel.displayName)
+        textPrefill: defaultProductivity?.displayName ?? logEntry?.productivityLevel.displayName)
     private lazy var notesPropertyView = LogEntryDetailPropertyView(
         delegate: self,
         labelTitle: "Notes",
@@ -56,8 +57,9 @@ class LogEntryDetailViewController: UIViewController {
     
     // MARK: - Initialization
     
-    init(logEntry: LogEntry? = nil, logEntryPreset: LogEntryPreset? = nil, context: Context = .new) {
+    init(logEntry: LogEntry? = nil, logEntryPreset: LogEntryPreset? = nil, defaultProductivity: ProductivityLevel? = nil, context: Context = .new) {
         self.logEntry = logEntry
+        self.defaultProductivity = defaultProductivity
         self.context = context
         super.init(nibName: nil, bundle: nil)
 
@@ -189,6 +191,8 @@ class LogEntryDetailViewController: UIViewController {
             action: #selector(save))
         if let navigationController = navigationController {
             UIUtils.addDividerToBottomOfView(navigationController.navigationBar)
+        } else {
+            Log.assert("Missing navigation controller!")
         }
     }
 

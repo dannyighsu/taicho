@@ -141,7 +141,6 @@ class LogEntryPresetDetailViewController: UIViewController {
     }
 
     private func configureNavigationItem() {
-        navigationController.assertIfNil()?.navigationBar.backgroundColor = .white
         navigationItem.title = context == .edit ? "Edit Preset" : "Create New Preset"
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .cancel,

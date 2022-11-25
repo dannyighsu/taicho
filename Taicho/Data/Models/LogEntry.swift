@@ -39,6 +39,15 @@ enum ProductivityLevel: String, CaseIterable {
         }
     }
     
+    var longDisplayName: String {
+        switch self {
+        case .none:
+            return displayName
+        default:
+            return "\(displayName) Productivity"
+        }
+    }
+    
     static func value(from displayString: String) -> Self? {
         switch displayString {
         case highProductivityDisplayString:
