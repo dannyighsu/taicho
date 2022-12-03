@@ -95,6 +95,9 @@ class LogEntryListViewController: UIViewController {
     }
 
     private func updateData() {
+        viewModels.sort { model1, model2 in
+            return model1.logEntry.time > model2.logEntry.time
+        }
         tableView.reloadData()
     }
     

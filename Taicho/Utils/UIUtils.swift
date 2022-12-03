@@ -79,7 +79,7 @@ class UIUtils {
     static func backgroundColor(for productivityLevel: ProductivityLevel) -> UIColor {
         switch productivityLevel {
         case .high:
-            return .blue.withAlphaComponent(0.5)
+            return .blue.withAlphaComponent(0.3)
         case .medium:
             return UIColor(displayP3Red: 51/255, green: 225/255, blue: 220/255, alpha: 0.5)
         case .low:
